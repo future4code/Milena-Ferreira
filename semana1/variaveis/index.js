@@ -38,12 +38,13 @@ const pergunta1 = "Você é brasileire?";
 const pergunta2 = "Você gosta de ler?";
 const pergunta3 = "Voce gosta de açaí?";
 
-let nacionalidade = prompt(pergunta1);
-let leitor = prompt(pergunta2);
-let acai = prompt(pergunta3);
-console.log(pergunta1, " - ", nacionalidade);
-console.log(pergunta2, " - ", leitor);
-console.log(pergunta3, " - ", acai);
+let resposta1 = prompt(pergunta1);
+let resposta2 = prompt(pergunta2);
+let resposta3 = prompt(pergunta3);
+
+console.log(pergunta1, " - ", resposta1);
+console.log(pergunta2, " - ", resposta2);
+console.log(pergunta3, " - ", resposta3);
 
 // Exercício 3
 
