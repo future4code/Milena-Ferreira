@@ -96,3 +96,51 @@
 // console.log(celsius, "ºC = ", fahrenheit, "ºF");
 // kelvin = (fahrenheit - 32) * (5/9) + 273.15;
 // console.log(fahrenheit, "ºF = ", kelvin, "K");
+
+// // DESAFIO 2
+
+// // a)
+// let consumo = 280;
+// let valorConta = consumo * 0.05;
+// console.log("Valor a ser pago para consumo de ", consumo, " kWh: R$", valorConta);
+
+// // b) 
+// valorConta = consumo * 0.05 * (1 - 0.15);
+// console.log("Valor com desconto de 15%: R$", valorConta);
+
+// // DESAFIO 3
+
+// // a)
+// let libras = 20;
+// let kilos = (libras / 2.2046).toFixed(2);
+// console.log(libras, "lb equivalen a ", kilos, "kg");
+
+// // b)
+// let oncas = 10.5;
+// kilos = (oncas / 35.274).toFixed(2);
+// console.log(oncas, "oz equivalem a ", kilos, "kg");
+
+// // c)
+// let milhas = 100;
+// let metros = milhas * 1609;
+// console.log(milhas, "mi equivalem a ", metros, "m");
+
+// // d)
+// let pes = 50;
+// metros = (pes / 3.281).toFixed(2);
+// console.log(pes, "ft equivalem a ", metros, "m");
+
+// // e)
+// let gal = 103.56;
+// let litros = (gal * 3.785412).toFixed(2);
+// console.log(gal, "gal equivalem a ", litros, "L");
+
+// // f)
+// let xic = 450;
+// litros = xic * 6 / 25;
+// console.log(xic, "xic equivalem a ", litros, "L");
+
+// // g)
+// xic = Number(prompt("Informe a quantidade de xícaras: "));
+// litros = xic * 6 / 25;
+// console.log(xic, "xic equivalem a ", litros, "L");
