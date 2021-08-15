@@ -10,7 +10,6 @@ function soma(num1, num2) {
 function imprimeMensagem() {
   // implemente sua lógica aqui
   const mensagem = prompt('Digite uma mensagem!')
-
   console.log(mensagem)
 }
 
@@ -37,9 +36,9 @@ function calculaIMC(peso, altura) {
 
 // EXERCÍCIO 04
 function imprimeInformacoesUsuario() {
-  let nome = prompt("Informen seu nome");
-  let idade = prompt("Informen sua idade");
-  let email = prompt("Informen seu email");
+  let nome = prompt("Informe seu nome");
+  let idade = prompt("Informe sua idade");
+  let email = prompt("Informe seu email");
   console.log(`Meu nome é ${nome}, tenho ${idade} anos, e o meu email é ${email}.`)
 }
 
@@ -96,18 +95,12 @@ function checaRenovacaoRG() {
   let anoNascimento = Number(prompt("Informe o ano de nascimento do(a) portador(a) do RG"));
   let anoEmissao = Number(prompt("Informe o ano de emissão do RG"));
 
-  let idadePessoa = anoAtual - anoNascimento;
-  let idadeRG = anoAtual - anoEmissao;
+  let idade = anoAtual - anoNascimento;
+  let tempoEmissao = anoAtual - anoEmissao;
 
-  let maior50 = idadePessoa > 50;
-  let maior20 = idadePessoa > 20;
-  let menor20 = idadePessoa <= 20;
-  let documentoTem5 = idadeRG >= 5;
-  let documentoTem10 = idadeRG >= 10;
-  let documentoTem15 = idadeRG >= 15;
-  console.log((menor20 && documentoTem5)
-              || (maior20 && !maior50 && documentoTem10)
-              || (maior50 && documentoTem15));
+  console.log((idade <= 20 && tempoEmissao >= 5)
+              || (idade <= 50 && tempoEmissao >= 10)
+              || (idade > 50 && tempoEmissao >= 15));
 }
 
 // EXERCÍCIO 14
@@ -123,8 +116,8 @@ function checaValidadeInscricaoLabenu() {
   let maior18 = prompt("Você tem mais de 18 anos?");
   let possuiEM = prompt("Você possui ensino médio completo?");
   let disponibilidade = prompt("Você possui disponibilidade exclusiva durante o horário do curso?");
-  let condicao1 = maior18 == "sim";
-  let condicao2 = possuiEM == "sim";
-  let condicao3 = disponibilidade == "sim";
+  let condicao1 = maior18 === "sim";
+  let condicao2 = possuiEM === "sim";
+  let condicao3 = disponibilidade === "sim";
   console.log(condicao1 && condicao2 && condicao3);
 }
