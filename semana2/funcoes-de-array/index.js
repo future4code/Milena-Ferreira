@@ -126,13 +126,37 @@ const geraFrase = (item) => {
 }
 
 const frasesProdsYpe = produtos.filter(verificaSeContemYpe).map(geraFrase);
-console.log(frasesProdsYpe);
+// console.log(frasesProdsYpe);
 
-// // EXERCÍCIO 3
 // // --------------------------------------------------
 
 // // DESAFIOS
 
 // // DESAFIO 1
 
-// // DESAFIO 2
+const pokemons = [
+    { nome: "Bulbasaur", tipo: "grama" },
+    { nome: "Bellsprout", tipo: "grama" },
+    { nome: "Charmander", tipo: "fogo" },
+    { nome: "Vulpix", tipo: "fogo" },
+    { nome: "Squirtle", tipo: "água" },
+    { nome: "Psyduck", tipo: "água" },
+]
+
+// a) Crie um novo array que contenha apenas o nome dos pokémons em ordem alfabética
+const pokemonsOrdemAlfabetica = pokemons
+    .map((pokemon) => {
+        return pokemon.nome;
+    }
+    ).sort()
+// console.log(pokemonsOrdemAlfabetica);
+
+// b) Crie um novo array apenas com os tipos dos pokémons, sem repetição
+const tiposPokemons = pokemons
+    .map((pokemon, index, array) => {
+        return pokemon.tipo;
+    })
+    .filter((tipoPoke, index, array) => {
+        if (array.indexOf(tipoPoke) === index) return tipoPoke
+    })
+console.log(tiposPokemons)
