@@ -29,12 +29,12 @@
 // let maiorIdade = suaIdade > idadeAmigo;
 // let difIdade = suaIdade - idadeAmigo;
 // console.log("Sua idade é maior do que a do seu melhor amigo? ", maiorIdade);
-// console.log("Diferença de idade: ",    difIdade)
+// console.log("Diferença de idade: ", difIdade)
 
 // // EXERCÍCIO 2
 
 // const numPar = Number(prompt("Insira um número par: "));
-// console.log(numPar % 2);
+// console.log("Resto da divisão por 2:" numPar % 2);
 
 // // c) O resultado é sempre 0.
 // // d) O resultado será 1.
@@ -42,7 +42,7 @@
 
 // // EXERCÍCIO 3
 
-// let idadeAnos = Number(prompt("Digite sua idade em anos:"));
+// let idadeAnos = Number(prompt("Digite sua idade:"));
 // let idadeMeses = idadeAnos * 12;
 // let idadeDias = idadeAnos * 365;
 // let idadeHoras = idadeDias * 24;
@@ -74,14 +74,14 @@
 // let kelvin;
 
 // // a)
-// celsius = 80;
-// fahrenheit = celsius * 9/5 + 32;
-// console.log(celsius, "ºC = ", fahrenheit, "ºF");
-
-// // b)
 // fahrenheit = 77;
 // kelvin = (fahrenheit - 32) * (5/9) + 273.15;
 // console.log(fahrenheit, "ºF = ", kelvin, "K");
+
+// // b)
+// celsius = 80;
+// fahrenheit = celsius * 9/5 + 32;
+// console.log(celsius, "ºC = ", fahrenheit, "ºF");
 
 // //c)
 // celsius = 30;
