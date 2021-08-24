@@ -141,14 +141,15 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-    contas.map((item) => {
-        let somaCompras = 0;
-        for (compra of contas.compras) {
+    let somaCompras = 0;
+    for (conta of contas) {
+        for (compra of conta.compras) {
             somaCompras += compra;
         }
-        item.compras = somaCompras;
-        return item;
-    });
+        conta.saldoTotal -= somaCompras;
+        conta.compras = []
+    }
+    return contas;
 }
 
 // EXERCÍCIO 15A
