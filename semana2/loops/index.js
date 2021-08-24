@@ -165,32 +165,81 @@ Menor número: ${menorValor}`)
 
 // // DESAFIO 2
 
+// Conversando com o Matheus no plantão hoje, ele me disse que a proposta do exercício era outra: o computador sorteia e eu que tento adivinhar o número que ele sorteou. Vou deixar a versão que eu fiz aqui e logo embaixo colocar o código do exercício como era pra ser.
+
+// Versão em que eu escolho o número e o computador tenta adivinhar
 function intervaloNumeros(minimo, maximo) {
   minimo = Math.floor(minimo);
-  maximo = Math.ceil(maximo);
+  maximo = Math.floor(maximo);
   return Math.floor(Math.random() * (maximo - minimo) + minimo);
 }
 
 function adivinheONumeroComputador() {
   let numeroImaginado = Number(prompt("Jogador 1, escolha o número:"));
   console.log("Vamos jogar!")
-  let numeroMinimo = 1
+  let numeroMinimo = 1;
   let numeroMaximo = 100;
   let numeroChutado = intervaloNumeros(numeroMinimo, numeroMaximo);
   let tentativas = 1;
-  while (numeroChutado !== numeroImaginado) {
-    console.log(`O número chutado foi: ${numeroChutado}`)
-    if (numeroChutado > numeroImaginado) {
-      numeroMaximo = numeroChutado;
-      console.log("Errou. O número escolhido é menor.")
-    } else {
-      numeroMinimo = numeroChutado;
-      console.log("Errou. O número escolhido é maior.")
+  if (numeroImaginado > 100 || numeroImaginado < 1) {
+    console.log("O número deve ser entre 1 e 100");
+    return;
+  } else {
+    while (numeroChutado !== numeroImaginado) {
+      console.log(`O número chutado foi: ${numeroChutado}`)
+      if (numeroChutado > numeroImaginado) {
+        numeroMaximo = numeroChutado;
+        console.log("Errou. O número escolhido é menor.")
+      } else {
+        numeroMinimo = numeroChutado;
+        console.log("Errou. O número escolhido é maior.")
+      }
+      numeroChutado = intervaloNumeros(numeroMinimo, numeroMaximo);
+      tentativas++;
     }
-    numeroChutado = intervaloNumeros(numeroMinimo, numeroMaximo);
+    console.log(`Acertou! O número escolhido era ${numeroImaginado}`);
+    console.log(`O número de tentativas foi: ${tentativas}`)
+  }
+}
+// adivinheONumeroComputador();
+
+// Versão em que o computador sorteia e eu adivinho, usando alert
+function adivinheONumeroUsuarioVsComputador() {
+  let numeroImaginado = intervaloNumeros(1, 100);
+  let numeroChutado = Number(prompt("Usuário, adivinhe o número:"));
+  let tentativas = 1;
+  while (numeroChutado !== numeroImaginado) {
+    numeroChutado = Number(prompt("Usuário, adivinhe o número:"));
+    alert(`O número chutado foi: ${numeroChutado}`)
+    if (numeroChutado > numeroImaginado) {
+      alert("Errou. O número escolhido é menor.");
+    }
+    else if (numeroChutado < numeroImaginado) {
+      alert("Errou. O número escolhido é maior.");
+    }
     tentativas++;
   }
   console.log(`Acertou! O número escolhido era ${numeroImaginado}`);
   console.log(`O número de tentativas foi: ${tentativas}`)
 }
-adivinheONumeroComputador();
+adivinheONumeroUsuarioVsComputador();
+
+// function adivinheONumeroUsuarioVsComputador() {
+//   let numeroImaginado = intervaloNumeros(1, 100);
+//   let numeroChutado = Number(prompt("Usuário, adivinhe o número:"));
+//   let tentativas = 1;
+//   while (numeroChutado !== numeroImaginado && tentativa < 2) {
+//     numeroChutado = Number(prompt("Usuário, adivinhe o número:"));
+//     console.log(`O número chutado foi: ${numeroChutado}`)
+//     if (numeroChutado > numeroImaginado) {
+//       console.log("Errou. O número escolhido é menor.");
+//     }
+//     else if (numeroChutado < numeroImaginado) {
+//       console.log("Errou. O número escolhido é maior.");
+//     }
+//     tentativas++;
+//   }
+//   console.log(`Acertou! O número escolhido era ${numeroImaginado}`);
+//   console.log(`O número de tentativas foi: ${tentativas}`)
+// }
+// adivinheONumeroUsuarioVsComputador();
