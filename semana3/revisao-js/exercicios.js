@@ -106,19 +106,49 @@ function retornaPessoaAnonimizada(pessoa) {
     return { ...pessoa, nome: "ANÔNIMO" }
 }
 
+const arrayPessoas = [
+    { nome: "Paula", idade: 12, altura: 1.8 },
+    { nome: "João", idade: 20, altura: 1.3 },
+    { nome: "Pedro", idade: 15, altura: 1.9 },
+    { nome: "Luciano", idade: 22, altura: 1.8 },
+    { nome: "Artur", idade: 10, altura: 1.2 },
+    { nome: "Soter", idade: 70, altura: 1.9 }
+]
+
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-
+    let pessoasAutorizadas = pessoas
+        .filter((item) => {
+            if (item.altura > 1.5
+                && item.idade > 14
+                && item.idade < 60)
+                return item;
+        })
+    return pessoasAutorizadas;
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-
+    let pessoasNaoAutorizadas = pessoas
+        .filter((item) => {
+            if (item.altura <= 1.5
+                || item.idade <= 14
+                || item.idade >= 60)
+                return item;
+        })
+    return pessoasNaoAutorizadas;
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    contas.map((item) => {
+        let somaCompras = 0;
+        for (compra of contas.compras) {
+            somaCompras += compra;
+        }
+        item.compras = somaCompras;
+        return item;
+    });
 }
 
 // EXERCÍCIO 15A
