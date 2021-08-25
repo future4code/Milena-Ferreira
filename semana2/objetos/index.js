@@ -29,110 +29,131 @@
 
 // EXERCÍCIO 1
 
-// a)
-const pessoa = {
-    nome: "Milena",
-    apelidos: ["Mili", "Mi", "Mimi"]
-}
+// // a)
+// const pessoa = {
+//     nome: "Milena",
+//     apelidos: ["Mili", "Mi", "Mimi"]
+// }
 
-function apresentarSe (objeto) {
-    console.log(`Eu sou ${objeto.nome}, mas pode me chamar de: ${objeto.apelidos[0]},  ${objeto.apelidos[1]} ou  ${objeto.apelidos[2]}`);
-}
-apresentarSe(pessoa);
+// function apresentarSe(objeto) {
+//     console.log(`Eu sou ${objeto.nome}, mas pode me chamar de: ${objeto.apelidos[0]},  ${objeto.apelidos[1]} ou  ${objeto.apelidos[2]}`);
+// }
+// apresentarSe(pessoaVersao2);
 
-// b)
-const novosApelidos = {...pessoa, apelidos: ["Mica", "Minena", "Nena"]};
-apresentarSe(novosApelidos);
+// // b)
+// const novosApelidos = { ...pessoaVersao2, apelidos: ["Mica", "Minena", "Nena"] };
+// apresentarSe(novosApelidos);
 
-const novosApelidos = {...pessoa, apelidos: ["Mica", "Minena", "Nena"]};
-apresentarSe(novosApelidos);
+// const novosApelidos2 = { ...pessoaVersao2, apelidos: ["Mica", "Minena", "Nena"] };
 
-// EXERCÍCIO 2
+// apresentarSe(novosApelidos);
+// apresentarSe(novosApelidos2);
 
-// a)
-const objeto1 = {
-    nome: "Alice",
-    idade: 23,
-    profissao: "UX designer"
-}
+// // EXERCÍCIO 2
 
-const objeto2 = {
-    nome: "Lucas",
-    idade: 30,
-    profissao: "desenvolvedor web"
-}
+// // a)
+// const pessoa1 = {
+//     nome: "Alice",
+//     idade: 23,
+//     profissao: "UX designer"
+// }
 
-// b)
-function minhaFuncao (objeto) {
-    return [
-            objeto.nome,
-            objeto.nome.length,
-            objeto.idade,
-            objeto.profissao,
-            objeto.profissao.length
-        ] 
-}
+// const pessoa2 = {
+//     nome: "Lucas",
+//     idade: 30,
+//     profissao: "desenvolvedor web"
+// }
 
-console.log(minhaFuncao(objeto1));
+// // b)
+// function retornaInfosSobrePessoa(pessoa) {
+//     return [
+//         pessoa.nome,
+//         pessoa.nome.length,
+//         pessoa.idade,
+//         pessoa.profissao,
+//         pessoa.profissao.length
+//     ]
+// }
+// console.log(retornaInfosSobrePessoa(pessoa1));
 
-// EXERCÍCIO 3
+// // EXERCÍCIO 3
 
-// a)
-const carrinho = [];
+// // a)
+// const carrinho = [];
 
-//b)
-const fruta1 = { nome: "morango", disponibilidade: true};
-const fruta2 = { nome: "pêssego", disponibilidade: true};
-const fruta3 = { nome: "uva", disponibilidade: true};
+// //b)
+// const morango = { nome: "morango", disponibilidade: true };
+// const pessego = { nome: "pêssego", disponibilidade: true };
+// const uva = { nome: "uva", disponibilidade: true };
 
-// c)
-function addCarrinho (fruta) {
-    carrinho.push(fruta);
-}
-// d)
-addCarrinho(fruta1);
-addCarrinho(fruta2);
-addCarrinho(fruta3);
-console.log(carrinho);
+// // c)
+// function addCarrinho(fruta) {
+//     carrinho.push(fruta);
+// }
+
+// addCarrinho(morango);
+// addCarrinho(pessego);
+// addCarrinho(uva);
+
+// // d)
+// console.log(carrinho);
 
 // --------------------------------------------------
 
 // DESAFIOS
 
-// DESAFIO 1
-function usuario () {
-    const nome = prompt("Digite seu nome");
-    const idade = Number(prompt("Digite sua idade"));
-    const profissao = prompt("Digite sua profissao");
-    const objeto = {
-        nome: nome,
-        idade: idade,
-        profissao: profissao
-    }
-    console.log(objeto, typeof(objeto));
+// // DESAFIO 1
+
+// function pessoaVersao2() {
+//     const pessoa = {
+//         nome: prompt("Digite seu nome"),
+//         idade: Number(prompt("Digite sua idade")),
+//         profissao: prompt("Digite sua profissao")
+//     }
+//     console.log(pessoa, typeof (pessoa));
+// }
+
+// pessoaVersao2();
+
+// // Solução original:
+// function pessoa() {
+//     const nome = prompt("Digite seu nome");
+//     const idade = Number(prompt("Digite sua idade"));
+//     const profissao = prompt("Digite sua profissao");
+//     const pessoa = {
+//         nome: nome,
+//         idade: idade,
+//         profissao: profissao
+//     }
+//     console.log(pessoa, typeof (pessoa));
+// }
+// pessoa();
+
+// // DESAFIO 2
+
+// const filme1 = { anoLancamento: 2001, nome: "O Fabuloso Destino de Amélie Poulain" };
+// const filme2 = { anoLancamento: 2019, nome: "Bacurau" };
+
+// function comparaFilmes(filme1, filme2) {
+//     return `O primeiro filme foi lançado antes do segundo? ${filme1.anoLancamento > filme2.anoLancamento}
+// O primeiro filme foi lançado no mesmo ano do segundo? ${filme1.anoLancamento === filme2.anoLancamento}`;
+// }
+// console.log(comparaFilmes(filme1, filme2));
+
+// // DESAFIO 3
+const morango = { nome: "morango", disponibilidade: true };
+const pessego = { nome: "pêssego", disponibilidade: true };
+const uva = { nome: "uva", disponibilidade: true };
+
+// Solução do Yuzo, não altera o objeto original
+function inverteDisponibilidade(fruta) {
+    return { ...fruta, disponibilidade: !fruta.disponibilidade }
 }
-usuario();
+console.log(inverteDisponibilidade(morango));
 
-// DESAFIO 2
-
-const filme1 = {anoLancamento: 2001, nome: "O Fabuloso Destino de Amélie Poulain"};
-const filme2 = {anoLancamento: 2019, nome: "Bacurau"};
-
-function comparaFilmes(filme1, filme2) {
-    console.log("O primeiro filme foi lançado antes do segundo?",
-                filme1.anoLancamento > filme2.anoLancamento);
-    console.log("O primeiro filme foi lançado no mesmo ano do segundo?",
-                filme1.anoLancamento === filme2.anoLancamento);
-}
-comparaFilmes(filme1, filme2);
-
-// DESAFIO 3
-const fruta1 = { nome: "morango", disponibilidade: true};
-const fruta2 = { nome: "pêssego", disponibilidade: true};
-const fruta3 = { nome: "uva", disponibilidade: true};
-
-function controlaEstoque (fruta) {
+// Solucão minha, altera o objeto original§
+function controlaEstoque(fruta) {
     fruta.disponibilidade = !fruta.disponibilidade;
-    return fruta; 
+    return fruta;
 }
-console.log(controlaEstoque(fruta1));
+console.log(controlaEstoque(morango));
