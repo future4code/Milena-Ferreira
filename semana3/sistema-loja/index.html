@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nome da Loja</title>
+    <title>Pop store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/261b73fff0.js" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
-    <div>
-        <h1>Bem-vind@ à <em>Pop store!</em>!</h1>
-        <p>Camisetas, moletons, bolsas e muito mais dos artistas pop do momento!</p>
-    </div>
+    <div class="header">
+        <div>
+            <h1 class="titulo">Pop Store</h1>
+            <p class="subtitulo">Camisetas, moletons, bolsas e muito mais dos artistas pop do momento!</p>
+        </div>
 
-    <div>
-        <a href="index.html">Página Inicial</a>
-        <a href="ctrl-estoque.html">Controle de Estoque</a>
-        <a href="add-produto.html">Adicionar Produto</a>
-        <a href="funcionarios.html">Funcionários</a>
-        <input type="search" placeholder="Procure no site">
+        <div class="menu-navegacao">
+            <a href="index.html">Página Inicial</a>
+            <a href="ctrl-estoque.html">Controle de Estoque</a>
+            <a href="add-produto.html">Adicionar Produto</a>
+            <a href="funcionarios.html">Funcionários</a>
+            <input class="search-bar" type="search" placeholder="   Pesquise no site">
+        </div>
     </div>
-
     <div>
         <h2>Novidades!</h2>
         <table>
             <tr>
-                <td><img src="./img/camiseta-billie-eilish.jpg" alt="" width="150"></td>
-                <td><img src="./img/camiseta-bts-jin-graffitti.jpg" alt="" width="150"></td>
-                <td><img src="./img/camiseta-lil-nas-x.jpeg" alt="" width="150"></td>
-                <td><img src="./img/camiseta-mamamoo-moonbyul.jpg" alt="" width="150"></td>
-                <td><img src="./img/tote-blackpink.jpg" alt="" width="150"></td>
+                <td><img class="img-produtos-novos" src="./img/camiseta-billie-eilish.jpg" alt=""></td>
+                <td><img class="img-produtos-novos" src="./img/camiseta-bts-jin-graffitti.jpg" alt=""></td>
+                <td><img class="img-produtos-novos" src="./img/camiseta-lil-nas-x.jpeg" alt=""></td>
+                <td><img class="img-produtos-novos" src="./img/camiseta-mamamoo-moonbyul.jpg" alt=""></td>
+                <td><img class="img-produtos-novos" src="./img/tote-blackpink.jpg" alt=""></td>
             </tr>
         </table>
     </div>
 
     <div>
         <h2>Venha conhecer nossa loja física!</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.608397462357!2d-43.93626698563349!3d-19.94090044379666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699c55676a433%3A0x59501931299d8bf3!2sP%C3%A1tio%20Savassi!5e0!3m2!1sen!2sbr!4v1629827054302!5m2!1sen!2sbr" width="1200" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe class="mapa"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.608397462357!2d-43.93626698563349!3d-19.94090044379666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699c55676a433%3A0x59501931299d8bf3!2sP%C3%A1tio%20Savassi!5e0!3m2!1sen!2sbr!4v1629827054302!5m2!1sen!2sbr"
+            allowfullscreen="" loading="lazy"></iframe>
     </div>
 
     <div>
         <p>Siga-nos nas redes sociais!</p>
 
         <div>
-            <img src="https://image.flaticon.com/icons/png/512/25/25305.png" width="50px"/>
-            <img src="https://image.flaticon.com/icons/png/512/25/25425.png" width="50px"/>
-            <img src="https://image.flaticon.com/icons/png/512/8/8800.png" width="50px"/>
+            <i class="fab fa-instagram"></i>
+            <img src="./img/facebook-brands.svg" alt="" class="img-redes-sociais">
+            <img src="./img/instagram-brands.svg" alt="" class="img-redes-sociais">
+            <img src="./img/twitter-brands.svg" alt="" class="img-redes-sociais">
         </div>
     </div>
 </body>
+
 </html>
