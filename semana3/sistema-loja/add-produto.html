@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Adicionar Produto</title>
-</head>
-<body>
-    <div>
-        <h1>Pop store</h1>
-    </div>
-    
-    <div>
-        <a href="index.html">Página Inicial</a>
-        <a href="ctrl-estoque.html">Controle de Estoque</a>
-        <a href="add-produto.html">Adicionar Produto</a>
-        <a href="funcionarios.html">Funcionários</a>
-        <input type="search" placeholder="Procure no site">
-    </div>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/261b73fff0.js" crossorigin="anonymous"></script>
 
-    
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <h1 class="titulo">Pop Store</h1>
+        </div>
+
+        <nav class="menu-navegacao">
+            <a href="index.html">Página Inicial</a>
+            <a href="ctrl-estoque.html">Controle de Estoque</a>
+            <a href="add-produto.html">Adicionar Produto</a>
+            <a href="funcionarios.html">Funcionários</a>
+            <form>
+                <input class="search-bar" type="search" placeholder="Pesquise no site">
+                <!-- <button class="btn-search">
+                        <i class="far fa-search"></i>
+                    </button> -->
+            </form>
+        </nav>
+    </header>
+
+
     <h2>Adicionar Produto</h2>
     <form action="">
         <div>
             <label for="link-foto">Link para foto: </label>
             <input type="url" id="link-foto" name="link-foto">
         </div>
-        
+
         <div>
             <label for="descricao">Descrição do produto: </label>
             <!-- Adicione o id apropriado para o input abaixo -->
             <input type="text" id="descricao" name="descrição" id="descricao">
         </div>
-        
+
         <div>
             <label for="preco">Preço (em R$): </label>
             <!-- Adicione o id apropriado e o type para receber números abaixo -->
             <input type="text" id="preco" name="preço">
         </div>
-        
+
         <div>
             <!-- Preencha as propriedades necessárias para os elementos abaixo -->
             <label for="quantidade">Quantidade disponível: </label>
@@ -51,6 +68,15 @@
         </div>
 
     </form>
+    <footer class="footer">
+        <p class="txt-redes-sociais">Siga-nos nas redes sociais!</p>
+        <div class="redes-sociais">
+            <i class="img-redes-sociais fab fa-facebook"></i>
+            <i class="img-redes-sociais fab fa-instagram"></i>
+            <i class="img-redes-sociais fab fa-twitter"></i>
+        </div>
+    </footer>
 
 </body>
+
 </html>

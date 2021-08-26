@@ -10,55 +10,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/261b73fff0.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-    <div class="header">
+    <header class="header">
         <div>
             <h1 class="titulo">Pop Store</h1>
             <p class="subtitulo">Camisetas, moletons, bolsas e muito mais dos artistas pop do momento!</p>
         </div>
 
-        <div class="menu-navegacao">
+        <nav class="menu-navegacao">
             <a href="index.html">Página Inicial</a>
             <a href="ctrl-estoque.html">Controle de Estoque</a>
             <a href="add-produto.html">Adicionar Produto</a>
             <a href="funcionarios.html">Funcionários</a>
-            <input class="search-bar" type="search" placeholder="   Pesquise no site">
-        </div>
-    </div>
-    <div>
-        <h2>Novidades!</h2>
-        <table>
-            <tr>
-                <td><img class="img-produtos-novos" src="./img/camiseta-billie-eilish.jpg" alt=""></td>
-                <td><img class="img-produtos-novos" src="./img/camiseta-bts-jin-graffitti.jpg" alt=""></td>
-                <td><img class="img-produtos-novos" src="./img/camiseta-lil-nas-x.jpeg" alt=""></td>
-                <td><img class="img-produtos-novos" src="./img/camiseta-mamamoo-moonbyul.jpg" alt=""></td>
-                <td><img class="img-produtos-novos" src="./img/tote-blackpink.jpg" alt=""></td>
-            </tr>
-        </table>
-    </div>
+            <form>
+                <input class="search-bar" type="search" placeholder="Pesquise no site">
+                <!-- <button class="btn-search">
+                    <i class="far fa-search"></i>
+                </button> -->
+            </form>
+        </nav>
+    </header>
+    <main>
+        <h2 class="titulo-secoes">Novidades!</h2>
+        <img class="img-produtos-novos" src="./img/camiseta-billie-eilish.jpg" alt="">
+        <img class="img-produtos-novos" src="./img/tote-blackpink.jpg" alt="">
+        <img class="img-produtos-novos" src="./img/camiseta-bts.jpg" alt="">
+        <img class="img-produtos-novos" src="./img/camiseta-lil-nas-x.jpeg" alt="">
+        <img class="img-produtos-novos" src="./img/camiseta-mamamoo-moonbyul.jpg" alt="">
+    </main>
 
-    <div>
-        <h2>Venha conhecer nossa loja física!</h2>
+    <main>
+        <h2 class="titulo-secoes">Venha conhecer nossa loja física!</h2>
         <iframe class="mapa"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.608397462357!2d-43.93626698563349!3d-19.94090044379666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699c55676a433%3A0x59501931299d8bf3!2sP%C3%A1tio%20Savassi!5e0!3m2!1sen!2sbr!4v1629827054302!5m2!1sen!2sbr"
             allowfullscreen="" loading="lazy"></iframe>
-    </div>
+    </main>
 
-    <div>
-        <p>Siga-nos nas redes sociais!</p>
-
-        <div>
-            <i class="fab fa-instagram"></i>
-            <img src="./img/facebook-brands.svg" alt="" class="img-redes-sociais">
-            <img src="./img/instagram-brands.svg" alt="" class="img-redes-sociais">
-            <img src="./img/twitter-brands.svg" alt="" class="img-redes-sociais">
+    <footer class="footer">
+        <p class="txt-redes-sociais">Siga-nos nas redes sociais!</p>
+        <div class="redes-sociais">
+            <i class="img-redes-sociais fab fa-facebook"></i>
+            <i class="img-redes-sociais fab fa-instagram"></i>
+            <i class="img-redes-sociais fab fa-twitter"></i>
         </div>
-    </div>
+    </footer>
 </body>
 
 </html>
