@@ -7,6 +7,39 @@ body {
     rgba(215, 238, 248, 1) 72%
   );
 }
+
+.color-red {
+  color: #c63041;
+}
+
+.color-blue {
+  color: #0070a2;
+}
+
+.color-pink {
+  color: #d32f57;
+}
+
+.color-green {
+  color: #277c34;
+}
+
+.color-purple {
+  color: #673b7f;
+}
+
+.color-strong-orange {
+  color: #d52b03;
+}
+
+.color-turquoise {
+  color: #34907d;
+}
+
+.color-light-orange {
+  color: #e48b3d;
+}
+
 .titulo {
   display: inline-block;
   color: #ac68ff;
@@ -37,11 +70,11 @@ body {
 .menu-navegacao a {
   display: inline;
   margin-right: 20px;
-  color: #ac68ff;
-  font-weight: 500;
+  color: #e98977;
+  font-weight: 700;
   text-transform: lowercase;
   font-family: "Montserrat", sans-serif;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .search-bar {
