@@ -107,6 +107,10 @@ table {
   /* margin: 0 auto; */
 }
 
+.search-bar {
+  border-width: 0 0 2px 0;
+}
+
 .tabela-produtos {
   margin: 0 auto;
 }
