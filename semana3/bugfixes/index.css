@@ -25,6 +25,10 @@ input {
   width: 500px;
 }
 
+button:hover {
+  filter: brightness(85%);
+}
+
 button:focus {
   color: white;
 }
@@ -53,7 +57,7 @@ div img {
 }
 
 .botao-amarelo:hover {
-  background-color: #c44f00;
+  background-color: #ff9b18;
 }
 
 .container {
@@ -138,6 +142,7 @@ td button {
   color: black;
 }
 
-#back-button:hover {
+#back-button:active {
   background-color: #635a3d;
+  color: white;
 }
