@@ -19,8 +19,15 @@
 // // Exercício 1
 
 // // a)
-// function sobreMim () {
-//     console.log("Eu sou Milena, tenho 29 anos, moro em Belo Horizonte e sou estudante.");
+
+// let nome = "Milena";
+// let idade = 29;
+// let cidade = "Belo Horizonte"
+// let ocupacao = "estudante"
+
+// function sobreMim() {
+//     console.log
+//         (`Eu sou ${nome}, tenho ${idade} anos, moro em ${cidade} e sou ${ocupacao}.`);
 // }
 // sobreMim();
 
@@ -34,10 +41,10 @@
 // // Exercício 2
 
 // // a)
-// function somar(num1, num2) {
+// function somarDoisNumeros(num1, num2) {
 //     return num1 + num2;
 // }
-// console.log(somar(5, 6));
+// console.log(somarDoisNumeros(5, 6));
 
 // // b)
 // function maiorOuIgual (num1, num2) {
@@ -52,10 +59,10 @@
 // console.log(ePar(5));
 
 // d)
-function tamanhoMsg(msg) {
-    console.log(msg.length, msg.toUpperCase());
-}
-tamanhoMsg("Ouvindo Piep Piper");
+// function tamanhoMsg(msg) {
+//     console.log(msg.length, msg.toUpperCase());
+// }
+// tamanhoMsg("Ouvindo Piep Piper");
 
 // // Exercício 3
 // function somar(num1, num2) {
