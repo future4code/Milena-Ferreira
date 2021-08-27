@@ -38,6 +38,15 @@ div img {
   background: black;
 }
 
+#listinha {
+  list-style: decimal;
+}
+
+li {
+  display: list-item;
+  list-style-position: inside;
+}
+
 .botao-amarelo {
   background-color: #ffaf43;
   width: 250px;
