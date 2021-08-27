@@ -80,6 +80,14 @@ li {
   background: none;
 }
 
+.icone:hover {
+  filter: opacity(30%);
+}
+
+.icone:active {
+  filter: opacity(100%);
+}
+
 /** 
   *
   *  ESTILOS HOME 
@@ -124,6 +132,11 @@ table {
 
 .search-bar {
   border-width: 0 0 2px 0;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
 }
 
 .tabela-produtos {
