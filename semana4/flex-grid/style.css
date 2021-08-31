@@ -1,0 +1,116 @@
+/* 
+- Rosa escuro: mediumvioletred
+- Rosa claro: #f2d0e0
+- Sombra do card: darkgray */
+
+* {
+	margin: 0;
+	padding: o;
+	box-sizing: border-box;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+/* body {
+	height: 100vh;
+} */
+
+header {
+	display: flex;
+	background-color: mediumvioletred;
+	justify-content: space-between;
+	align-items: center;
+	height: 80px;
+	padding: 20px;
+	font-weight: bolder;
+}
+
+.titulo {
+	display: flex;
+	align-items: center;
+}
+
+.titulo h1 {
+	padding-left: 20px;
+	font-size: 30px;
+}
+
+.img-titulo {
+	width: 25px;
+}
+
+main {
+	display: flex;
+	height: auto;
+}
+
+nav {
+	padding-top: 10px;
+	background-color: #f2d0e0;
+	width: 300px;
+}
+
+.btn-nav {
+	display: flex;
+	padding: 10px;
+	/* width: 100%; */
+	text-transform: uppercase;
+	font-weight: bold;
+	justify-content: space-between;
+}
+
+.icones-nav {
+	width: 20px;
+	height: 20px;
+}
+
+.item-nav {
+	margin: 0 10px;
+	display: flex;
+	align-items: center;
+}
+
+.item-nav .icones-nav {
+	margin-right: 15px;
+}
+
+.container-cards {
+	display: grid;
+	width: 100%;
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-columns: repeat(4, 1fr);
+	gap: 15px;
+	margin: 15px;
+}
+
+.card-item {
+	box-shadow: 2px 2px 5px gray;
+}
+
+.card-item img {
+	width: 100%;
+}
+
+.card-item p,
+.card-item h4 {
+	padding: 5px 10px;
+}
+
+.titulo-card {
+	text-align: center;
+}
+
+.texto-card {
+	text-align: center;
+	font-size: 16px;
+}
+
+footer {
+	display: flex;
+	background-color: mediumvioletred;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	padding: 20px;
+	font-weight: bolder;
+}
