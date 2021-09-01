@@ -1,43 +1,90 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+}
+
+body {
+	height: 100vh;
+}
+
+a {
+	text-decoration: none;
+	color: black;
 }
 
 header {
-  background-color: lightcoral;
-  height: 100px;
+	/* background-color: lightcoral; */
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 20px;
 }
 
+.logo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: 3px solid black;
+	width: 200px;
+	height: 50px;
+}
+
+.search-bar {
+  
+}
+
+#play-icon {
+	width: 25px;
+}
+
+#logo-img {
+	width: 130px;
+}
 .container-grid {
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(4, 1fr);
-  padding: 20px;
-  gap: 15px;
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-columns: repeat(4, 1fr);
+	padding: 20px;
+	gap: 15px;
 }
 
 .video-card {
-  text-align: center;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 900;
+	box-shadow: 2px 2px 5px gray;
 }
 
+.video-card h4 {
+	padding: 5px 0 10px 0;
+}
 .video-thumb {
-  width: 100%;
+	width: 100%;
 }
 
 footer {
-  background-color: lightgray;
-  height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	height: 50px;
+	margin-bottom: 10px;
+	font-size: 12px;
+	font-weight: 600;
 }
 
 /* Tela Video 1 */
 
 .video-full {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .video-full video {
-  width: 50%;
+	width: 50%;
 }
