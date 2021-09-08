@@ -10,7 +10,7 @@ export const EstiloImagemButton = styled.div`
   margin: 10px auto;
 `
 
-export const EstiloImagemButtonImg = styled.div`
+export const EstiloImagemButtonImg = styled.img`
 width: 30px;
 margin-right: 10px;
 `

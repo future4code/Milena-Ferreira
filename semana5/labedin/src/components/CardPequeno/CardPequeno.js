@@ -1,15 +1,12 @@
 import React from 'react';
-import './CardPequeno.css'
+import { EstiloCardoPequeno, EstiloCardoPequenoImg } from './EstiloCardPequeno'
 
 function CardPequeno(props) {
   return (
-    <div className="bigcard-container">
-      <img src={props.imagem} />
-      <div>
-        <h4>{props.nome}</h4>
-        <p>{props.descricao}</p>
-      </div>
-    </div>
+    <EstiloCardoPequeno>
+      <EstiloCardoPequenoImg src={props.imagem} />
+      <p><strong>{props.campo}</strong> {props.valor}</p>
+    </EstiloCardoPequeno>
   )
 }
 

@@ -1,13 +1,10 @@
 import React from 'react';
-import './ImagemButton.css'
 import { EstiloImagemButton, EstiloImagemButtonImg } from './EstiloImagemButton.js';
 
 function ImagemButton(props) {
     return (
         <EstiloImagemButton>
-            <EstiloImagemButtonImg>
-                <img src={props.imagem} />
-            </EstiloImagemButtonImg>
+            <EstiloImagemButtonImg src={props.imagem} />
             <p>{props.texto}</p>
         </EstiloImagemButton>
 
