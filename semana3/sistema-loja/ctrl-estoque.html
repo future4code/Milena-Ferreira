@@ -1,109 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Controle de Estoque</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/261b73fff0.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Controle de Estoque</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/261b73fff0.js" crossorigin="anonymous"></script>
+	<body>
+		<header class="header">
+			<div>
+				<img src="./img/logo.png" class="logo" alt="" />
+			</div>
 
-</head>
+			<nav class="menu-navegacao">
+				<a href="index.html">Página Inicial</a>
+				<a href="ctrl-estoque.html">Controle de Estoque</a>
+				<a href="add-produto.html">Adicionar Produto</a>
+				<a href="funcionarios.html">Funcionários</a>
+				<form>
+					<input
+						class="search-bar"
+						type="search"
+						placeholder="Pesquise no site"
+					/>
+				</form>
+			</nav>
+		</header>
 
-<body>
-    <header class="header">
-        <div>
-            <h1 class="titulo">Pop Store</h1>
-        </div>
+		<h2>Controle de Estoque</h2>
 
-        <nav class="menu-navegacao">
-            <a href="index.html">Página Inicial</a>
-            <a href="ctrl-estoque.html">Controle de Estoque</a>
-            <a href="add-produto.html">Adicionar Produto</a>
-            <a href="funcionarios.html">Funcionários</a>
-            <form>
-                <input class="search-bar" type="search" placeholder="Pesquise no site">
-                <!-- <button class="btn-search">
-                            <i class="far fa-search"></i>
-                        </button> -->
-            </form>
-        </nav>
-    </header>
+		<table>
+			<tr>
+				<th>Foto</th>
+				<th>Descrição</th>
+				<th>Preço (R$)</th>
+				<th>Quantidade disponível</th>
+				<th>Cores</th>
+			</tr>
 
-    <h2>Controle de Estoque</h2>
+			<tr>
+				<td>
+					<img
+						src="./img/camiseta-lil-nas-x.jpeg"
+						alt="Camiseta cor de chumbo com estampa de cavalo e frase: I'm gonna take my horse to the old town road"
+						width="250"
+					/>
+				</td>
+				<td>Camiseta Lil Nas X - Old Town Road</td>
+				<td>R$50,00</td>
+				<td>5</td>
+				<td><input type="color" /></td>
+			</tr>
 
-    <table>
-        <tr>
-            <th>Foto</th>
-            <th>Descrição</th>
-            <th>Preço (R$)</th>
-            <th>Quantidade disponível</th>
-            <th>Cores</th>
-        </tr>
+			<tr>
+				<td>
+					<img
+						src="./img/camiseta-bts-jin-graffitti.jpg"
+						alt="Camiseta branca com desenho de baleia pintada em guache azul e frase: Kore"
+						width="250"
+					/>
+				</td>
+				<td>Camiseta BTS Jin - Graffitti</td>
+				<td>R$70,00</td>
+				<td>10</td>
+				<td><input type="color" /></td>
+			</tr>
 
-        <tr>
-            <td><img src="./img/camiseta-lil-nas-x.jpeg"
-                    alt="Camiseta cor de chumbo com estampa de cavalo e frase: I'm gonna take my horse to the old town road"
-                    width="250" /></td>
-            <td> Camiseta Lil Nas X - Old Town Road </td>
-            <td> R$50,00 </td>
-            <td> 5 </td>
-            <td> <input type="color"></td>
-        </tr>
+			<tr>
+				<td>
+					<img
+						src="./img/camiseta-billie-eilish.jpg"
+						alt="Camiseta creme com desenho da Billie Eilish"
+						width="250"
+					/>
+				</td>
+				<td>Camiseta Billie Eilish</td>
+				<td>R$50,00</td>
+				<td>7</td>
+				<td><input type="color" /></td>
+			</tr>
 
-        <tr>
-            <td><img src="./img/camiseta-bts-jin-graffitti.jpg"
-                    alt="Camiseta branca com desenho de baleia pintada em guache azul e frase: Kore" width="250" /></td>
-            <td> Camiseta BTS Jin - Graffitti </td>
-            <td> R$70,00 </td>
-            <td> 10 </td>
-            <td> <input type="color"></td>
-        </tr>
+			<tr>
+				<td>
+					<img
+						src="./img/tote-blackpink.jpg"
+						alt="Sacola de tecido cru com desenho do BlackPink"
+						width="250"
+					/>
+				</td>
+				<td>Tote bag BlackPink</td>
+				<td>R$25,00</td>
+				<td>3</td>
+				<td><input type="color" /></td>
+			</tr>
 
-        <tr>
-            <td><img src="./img/camiseta-billie-eilish.jpg" alt="Camiseta creme com desenho da Billie Eilish"
-                    width="250" /></td>
-            <td> Camiseta Billie Eilish </td>
-            <td> R$50,00 </td>
-            <td> 7 </td>
-            <td> <input type="color"></td>
-        </tr>
+			<!-- Crie mais uma linha desta tabela abaixo \/ -->
 
-        <tr>
-            <td><img src="./img/tote-blackpink.jpg" alt="Sacola de tecido cru com desenho do BlackPink" width="250" />
-            </td>
-            <td> Tote bag BlackPink </td>
-            <td> R$25,00 </td>
-            <td> 3 </td>
-            <td> <input type="color"></td>
-        </tr>
-
-        <!-- Crie mais uma linha desta tabela abaixo \/ -->
-
-        <tr>
-            <td> <img src="./img/camiseta-mamamoo-moonbyul.jpg" alt="Camiseta cinza escrito Moon - estilizado"
-                    width="250"> </td>
-            <td> Camiseta Mamamoo Moon-byul </td>
-            <td> R$55,00 </td>
-            <td> 5 </td>
-            <td> <input type="color"></td>
-        </tr>
-    </table>
-    <footer class="footer">
-        <p class="txt-redes-sociais">Siga-nos nas redes sociais!</p>
-        <div class="redes-sociais">
-            <i class="img-redes-sociais fab fa-facebook"></i>
-            <i class="img-redes-sociais fab fa-instagram"></i>
-            <i class="img-redes-sociais fab fa-twitter"></i>
-        </div>
-    </footer>
-
-</body>
-
+			<tr>
+				<td>
+					<img
+						src="./img/camiseta-mamamoo-moonbyul.jpg"
+						alt="Camiseta cinza escrito Moon - estilizado"
+						width="250"
+					/>
+				</td>
+				<td>Camiseta Mamamoo Moon-byul</td>
+				<td>R$55,00</td>
+				<td>5</td>
+				<td><input type="color" /></td>
+			</tr>
+		</table>
+		<footer class="footer">
+			<p class="txt-redes-sociais">Siga-nos nas redes sociais!</p>
+			<div class="redes-sociais">
+				<i class="img-redes-sociais fab fa-facebook"></i>
+				<i class="img-redes-sociais fab fa-instagram"></i>
+				<i class="img-redes-sociais fab fa-twitter"></i>
+			</div>
+		</footer>
+	</body>
 </html>
