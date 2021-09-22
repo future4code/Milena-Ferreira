@@ -1,6 +1,4 @@
 import React from "react";
-import axios from "axios";
-import styled from "styled-components";
 
 export default class ListaUsuarios extends React.Component {
 
@@ -16,16 +14,17 @@ export default class ListaUsuarios extends React.Component {
     const listaMapeada = this.listaUsuarios.map(usuario => {
       return (
         <div>
-          {usuario}<button>X</button>
+          {usuario} <button>X</button>
         </div>
       )
     })
+    return listaMapeada;
   }
 
   render() {
     return (
       <div>
-        <h3>Usuários Cadastrados:</h3>
+        <h2>Usuários Cadastrados:</h2>
         {this.renderizaListaUsuarios}
       </div>
     )
