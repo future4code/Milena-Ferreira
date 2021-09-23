@@ -61,19 +61,6 @@ export default class App extends React.Component {
     })
   }
 
-  deleteUser = (id) => {
-    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
-    axios.delete(url, {
-      headers: {
-        Authorization: "milena-lara-maryam"
-      }
-    }).then((resposta) => {
-      console.log("deleteUser resposta", resposta.data);
-    }).catch((erro) => {
-      console.log(erro.message)
-    })
-  }
-
   onChangeUserName = (event) => {
     this.setState({ userName: event.target.value })
   }
@@ -114,7 +101,6 @@ export default class App extends React.Component {
       return (
         <ListaUsuarios
           listaUsuarios={this.state.users}
-          onClickDelete={this.deleteUser(this.state.users)}
         />
       )
     }
