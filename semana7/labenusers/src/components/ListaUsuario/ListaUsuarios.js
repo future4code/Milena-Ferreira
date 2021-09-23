@@ -2,19 +2,11 @@ import React from "react";
 
 export default class ListaUsuarios extends React.Component {
 
-  listaUsuarios = [
-    "Murilo",
-    "Leo",
-    "Flamarion",
-    "Ana",
-    "Catarina"
-  ];
-
-  renderizaListaUsuarios = () => {
-    const listaMapeada = this.listaUsuarios.map(usuario => {
+  renderUsers = () => {
+    const listaMapeada = this.props.listaUsuarios.map(usuario => {
       return (
         <div>
-          {usuario} <button>X</button>
+          {usuario.name} <button onClick={this.props.onClickDelete}>X</button>
         </div>
       )
     })
@@ -25,7 +17,7 @@ export default class ListaUsuarios extends React.Component {
     return (
       <div>
         <h2>Usuários Cadastrados:</h2>
-        {this.renderizaListaUsuarios}
+        {this.renderUsers()}
       </div>
     )
   }

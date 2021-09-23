@@ -10,19 +10,24 @@ const Home = styled.div`
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 10px;
 `
 
 export default class App extends React.Component {
   state = {
-    section: "cadastro",
+    section: "usuarios",
     users: [],
     userName: "",
     userEmail: ""
   };
 
   componentDidMount = () => {
+    this.getAllUsers();
+  }
+
+  componentDidUpdate = () => {
     this.getAllUsers();
   }
 
@@ -56,6 +61,19 @@ export default class App extends React.Component {
     })
   }
 
+  deleteUser = (id) => {
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
+    axios.delete(url, {
+      headers: {
+        Authorization: "milena-lara-maryam"
+      }
+    }).then((resposta) => {
+      console.log("deleteUser resposta", resposta.data);
+    }).catch((erro) => {
+      console.log(erro.message)
+    })
+  }
+
   onChangeUserName = (event) => {
     this.setState({ userName: event.target.value })
   }
@@ -64,33 +82,48 @@ export default class App extends React.Component {
     this.setState({ userEmail: event.target.value })
   }
 
-  renderSection = () => {
-    if (this.state.section === "cadastro") return <Cadastro
-      onChangeUserName={this.onChangeUserName}
-      onChangeUserEmail={this.onChangeUserEmail}
-      userName={this.state.userName}
-      userEmail={this.state.userEmail}
-      onClickSave={this.createUser}
-    />;
-    if (this.state.section === "usuarios") return <ListaUsuarios />;
+  onClickChangeSection = () => {
+    if (this.state.section === "cadastro") {
+      this.setState({ section: "usuarios" })
+    }
+    if (this.state.section === "usuarios") {
+      this.setState({ section: "cadastro" })
+    }
   }
 
-  onClickBtnNav = () => {
-    if (this.state.section === "cadastro") this.setState({ secao: "usuarios" })
-    if (this.state.section === "usuarios") this.setState({ secao: "cadastro" })
-  }
-
-  pickBtnTxt = () => {
+  changeBtnTxt = () => {
     let texto;
     if (this.state.section === "cadastro") texto = "Ir para a página de lista";
     if (this.state.section === "usuarios") texto = "Ir para a página de registro";
     return texto;
   }
 
+  renderSection = () => {
+    if (this.state.section === "cadastro") {
+      return (
+        <Cadastro
+          onChangeUserName={this.onChangeUserName}
+          onChangeUserEmail={this.onChangeUserEmail}
+          userName={this.state.userName}
+          userEmail={this.state.userEmail}
+          onClickSave={this.createUser}
+        />
+      )
+    }
+    if (this.state.section === "usuarios") {
+      return (
+        <ListaUsuarios
+          listaUsuarios={this.state.users}
+          onClickDelete={this.deleteUser(this.state.users)}
+        />
+      )
+    }
+  }
+
   render() {
     return (
       <Home>
-        <button onClick={this.onClickBtnNav}>{this.pickBtnTxt()}</button>
+        <button onClick={this.onClickChangeSection}>{this.changeBtnTxt()}</button>
         <Container>
           {this.renderSection()}
         </Container>
