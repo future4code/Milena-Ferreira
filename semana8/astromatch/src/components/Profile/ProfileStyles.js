@@ -1,10 +1,23 @@
 import styled from "styled-components";
 
-export const ContProf = styled.div`
+export const ContainerProfile = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   height: 80%;
   width: 100%;
-  background-color: lightcoral;
+`
+
+export const ProfilePicture = styled.img`
+max-height: 50%;
+`
+
+export const ContainerProfileText = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 25%;
+width: 100%;
+padding: 10px;
 `

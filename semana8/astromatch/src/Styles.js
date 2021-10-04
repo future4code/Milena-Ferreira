@@ -26,14 +26,6 @@ export const ContainerAppTitle = styled.div`
   background-color: lightgrey;
 `
 
-export const ContainerProfileProvisorio = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 80%;
-  width: 100%;
-  background-color: lightcoral;
-`
-
 export const ContainerButtons = styled.div`
   display: flex;
   justify-content: space-around;
