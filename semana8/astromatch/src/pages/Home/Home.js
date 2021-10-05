@@ -8,17 +8,12 @@ import { url, student } from "../../constants/constants";
 function Home() {
   const apiLink = `${url}/${student}/person`
 
-  const [likedProfiles, setLikedPeople] = useState([])
-  const [displayedProfile, setDisplayedProfile] = useState({
-    id: 'Cl3gXDxcQZkty8aoatXm',
-    name: 'Ariel',
-    bio: 'Adoro música e independência. Procuro alguém que saiba nadar.', photo: 'https://upload.wikimedia.org/wikipedia/pt/3/36/PrincesaAriel.png',
-    age: 20
-  })
+
+  const [displayedProfile, setDisplayedProfile] = useState({})
 
   useEffect(() => {
-    // getProfileToChoose();
-  })
+    getProfileToChoose();
+  }, [])
 
   const getProfileToChoose = () => {
     axios.get(apiLink)
@@ -44,10 +39,12 @@ function Home() {
         <Button
           type={"dislike"}
           text={"No"}
+          onClick={getProfileToChoose}
         />
         <Button
           type={"like"}
           text={"Yes"}
+          onClick={getProfileToChoose}
         />
       </ContainerButtons>
     </ContainerContent>
