@@ -6,7 +6,7 @@ function Profile(props) {
     <ContainerProfile>
       <ProfilePicture src={props.photo} />
       <ContainerProfileText>
-        <h1>{props.name}, {props.age}</h1>
+        <h2>{props.name}, {props.age}</h2>
         <p>{props.bio}</p>
       </ContainerProfileText>
     </ContainerProfile>

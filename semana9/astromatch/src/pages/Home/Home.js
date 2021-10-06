@@ -3,27 +3,20 @@ import axios from "axios";
 import Button from "../../components/Button/Button";
 import Profile from "../../components/Profile/Profile";
 import { ContainerContent, ContainerButtons, ContainerAppTitle } from "../../Styles";
-import { url, student } from "../../constants/constants";
+import { base_url, student } from "../../constants/constants";
+import { getProfileToChoose, getMatches, choosePerson } from "../../services/requests";
 
 function Home() {
-  const apiLink = `${url}/${student}/person`
-
-
-  const [displayedProfile, setDisplayedProfile] = useState({})
+  const [displayedProfile, setDisplayedProfile] = useState({});
+  const [matches, setMatches] = useState([]);
 
   useEffect(() => {
-    getProfileToChoose();
+    getProfileToChoose(setDisplayedProfile);
   }, [])
 
-  const getProfileToChoose = () => {
-    axios.get(apiLink)
-      .then(res => {
-        setDisplayedProfile(res.data.profile)
-        console.log("RESPONSE", res.data.profile);
-      })
-      .catch(err => {
-        console.log(err);
-      })
+  const saveMatches = (character) => {
+    const matchesCopy = [...matches, character];
+
   }
 
   return (
