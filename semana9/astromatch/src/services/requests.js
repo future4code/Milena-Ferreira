@@ -1,12 +1,11 @@
 import axios from "axios";
 import { base_url, student, headers } from "../constants/constants";
 
-export const getProfileToChoose = (setStateToData) => {
+export const getProfileToChoose = (saveData) => {
   axios
     .get(`${base_url}/${student}/person`)
     .then(response => {
-      setStateToData(response.data.profile);
-      console.log(response.data.profile)
+      saveData(response.data.profile);
     })
     .catch(error => {
       console.log(error);
@@ -24,16 +23,16 @@ export const getMatches = () => {
     })
 }
 
-export const choosePerson = (id, choice) => {
+export const choosePerson = (person, choice) => {
   const body = {
-    "id": id,
+    "id": person.id,
     "choice": choice
   }
-
   axios
     .post(`${base_url}/${student}/choose-person`, body, headers)
     .then(response => {
-      console.log(response);
+      if (choice) alert(`Você curtiu ${person.name} ;)`)
+      else alert("Thank you, next ;(")
     })
     .catch(error => {
       console.log(error);

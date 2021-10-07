@@ -1,47 +1,59 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
 import Profile from "../../components/Profile/Profile";
-import { ContainerContent, ContainerButtons, ContainerAppTitle } from "../../Styles";
-import { base_url, student } from "../../constants/constants";
-import { getProfileToChoose, getMatches, choosePerson } from "../../services/requests";
+import Matches from "../Matches/Matches";
+import { ContainerContent, ContainerButtons } from "../../Styles";
+import { getProfileToChoose, choosePerson } from "../../services/requests"
 
 function Home() {
+  const [screen, setScreen] = useState("matches")
   const [displayedProfile, setDisplayedProfile] = useState({});
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
-    getProfileToChoose(setDisplayedProfile);
+    getProfileToChoose(saveCharacterOnState);
   }, [])
 
-  const saveMatches = (character) => {
-    const matchesCopy = [...matches, character];
+  const saveCharacterOnState = (data) => {
+    setDisplayedProfile(data);
+  }
 
+  const changeScreen = () => {
+    if (screen === "profiles") {
+      return (
+        <ContainerContent>
+          <Profile
+            photo={displayedProfile.photo}
+            name={displayedProfile.name}
+            age={displayedProfile.age}
+            bio={displayedProfile.bio}
+          />
+          <ContainerButtons>
+            <Button
+              type={"dislike"}
+              text={"No"}
+              onClick={() => choosePerson(displayedProfile, false)}
+            />
+            <Button
+              type={"like"}
+              text={"Yes"}
+              onClick={() => choosePerson(displayedProfile, true)}
+            />
+          </ContainerButtons>
+        </ContainerContent>
+      )
+    }
+    if (screen === "matches") return <Matches />
   }
 
   return (
-    <ContainerContent>
-      <ContainerAppTitle>AstroMatch</ContainerAppTitle>
-      <Profile
-        photo={displayedProfile.photo}
-        name={displayedProfile.name}
-        age={displayedProfile.age}
-        bio={displayedProfile.bio}
-      />
-      <ContainerButtons>
-        <Button
-          type={"dislike"}
-          text={"No"}
-          onClick={getProfileToChoose}
-        />
-        <Button
-          type={"like"}
-          text={"Yes"}
-          onClick={getProfileToChoose}
-        />
-      </ContainerButtons>
-    </ContainerContent>
+    <div>
+      <Header />
+      {changeScreen()}
+    </div>
   )
 }
+
 
 export default Home;

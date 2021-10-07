@@ -17,15 +17,6 @@ export const ContainerContent = styled.div`
   border: 1px solid black;
 `
 
-export const ContainerAppTitle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10%;
-  width: 100%;
-  background-color: lightgrey;
-`
-
 export const ContainerButtons = styled.div`
   display: flex;
   justify-content: space-around;
