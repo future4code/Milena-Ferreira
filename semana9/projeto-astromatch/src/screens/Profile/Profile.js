@@ -14,6 +14,12 @@ function Profile() {
     setProfile(data);
   }
 
+  const onClickChoosePerson = (choice) => {
+    choosePerson(profile.id, choice);
+    getProfileToChoose(saveProfile);
+    console.log(`Escolhi ${profile.name}: ${choice}`)
+  }
+
   return (
     <ProfileContainer>
       <ProfilePhoto src={profile.photo} />
@@ -22,8 +28,8 @@ function Profile() {
         <p>{profile.bio}</p>
       </TextContainer>
       <ButtonsContainer>
-        <button onClick={() => choosePerson(profile.id, false)}>Dislike</button>
-        <button onClick={() => choosePerson(profile.id, true)}>Like</button>
+        <button onClick={() => onClickChoosePerson(false)}>Dislike</button>
+        <button onClick={() => onClickChoosePerson(true)}>Like</button>
       </ButtonsContainer>
     </ProfileContainer>
   );
