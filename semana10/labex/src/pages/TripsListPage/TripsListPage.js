@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Input from "../../components/Input/Input";
-import { ContainerFilters } from "./TripsListPageStyles";
-import ComboBox from "../../components/ComboBox/ComboBox";
+import { MenuItem, TextField } from "@material-ui/core";
+import { Box } from "@material-ui/system";
 import TripCard from "../../components/TripCard/TripCard";
-import axios from "axios"
+import axios from "axios";
 
 function TripsListPage() {
   const [destinations, setDestinations] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [planet, setPlanet] = useState("");
+
+  const handlePlanet = (event) => {
+    setPlanet(event.target.value);
+  }
 
   useEffect(() => {
     setIsLoading(true)
@@ -29,14 +33,39 @@ function TripsListPage() {
         description={destination.description} />
     )
   }))
+
+  const filtrosOrdenacao = ["maior preço", "menor preço", "destino"];
   return (
     <div>
-      <ContainerFilters>
-        <Input text={"valor mínimo"} />
-        <Input text={"valor máximo"} />
-        <ComboBox text={"destinos"} items={destinations} />
-        <ComboBox text={"ordenar"} items={destinations} />
-      </ContainerFilters>
+      <div>
+        <TextField
+          id="standard-helperText"
+          label="Valor mínimo"
+          placeholder="R$"
+          variant="standard"
+        />
+        <TextField
+          id="standard-helperText"
+          label="Valor máximo"
+          placeholder="R$"
+          variant="standard"
+        />
+        <TextField
+          id="standard-select-currency"
+          select
+          label="Destino"
+          value={planet}
+          onChange={handlePlanet}
+          helperText="Selecione o planeta destino"
+          variant="standard"
+        >
+          {destinations.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+      </div>
       {isLoading && <h2>Carregando...</h2>}
       {!isLoading && destinations && tripCards}
     </div>
