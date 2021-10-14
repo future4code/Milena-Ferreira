@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { MenuItem, TextField } from "@material-ui/core";
+import { Button, Card, CardActions, CardContent, MenuItem, TextField, Typography } from "@material-ui/core";
 import { Box } from "@material-ui/system";
-import TripCard from "../../components/TripCard/TripCard";
 import axios from "axios";
+import { ContainerFilters } from "./TripsListPageStyles";
+import { InputAdornment } from "@material-ui/core";
 
 function TripsListPage() {
   const [destinations, setDestinations] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [planet, setPlanet] = useState("");
-
-  const handlePlanet = (event) => {
-    setPlanet(event.target.value);
-  }
+  const [isLoading, setIsLoading] = useState(false);
+  const [planets, setPlanets] = useState([
+    "Marte", "Jupiter", "Saturno"
+  ])
 
   useEffect(() => {
     setIsLoading(true)
@@ -26,46 +25,78 @@ function TripsListPage() {
 
   const tripCards = destinations.map((destination => {
     return (
-      <TripCard key={destination.id}
-        name={destination.name}
-        date={destination.date}
-        duration={destination.durationInDays}
-        description={destination.description} />
+      <Card sx={{ maxWidth: 300 }} key={destination.id} variant="outlined">
+        <CardContent>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            {destination.date}
+          </Typography>
+          <Typography variant="h5" component="div">
+            {destination.name}
+          </Typography>
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            {destination.durationInDays} dias
+          </Typography>
+          <Typography variant="body2">
+            {destination.description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Inscreva-se!</Button>
+        </CardActions>
+      </Card>
     )
   }))
 
-  const filtrosOrdenacao = ["maior preço", "menor preço", "destino"];
   return (
     <div>
-      <div>
+      <ContainerFilters>
         <TextField
-          id="standard-helperText"
-          label="Valor mínimo"
-          placeholder="R$"
-          variant="standard"
+          label="valor mínimo"
+          size="small"
+          sx={{ m: 1, width: '25ch' }}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">R$</InputAdornment>,
+          }}
         />
         <TextField
-          id="standard-helperText"
-          label="Valor máximo"
-          placeholder="R$"
-          variant="standard"
+          label="valor máximo"
+          size="small"
+          sx={{ m: 1, width: '25ch' }}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">R$</InputAdornment>,
+          }}
         />
         <TextField
-          id="standard-select-currency"
+          id="outlined-select-currency"
           select
           label="Destino"
-          value={planet}
-          onChange={handlePlanet}
-          helperText="Selecione o planeta destino"
-          variant="standard"
+          sx={{ m: 1, width: '25ch' }}
+          size="small"
+          value={"xxx"}
+        // onChange={handleChange}
         >
-          {destinations.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
+          {planets.map((option, index) => (
+            <MenuItem key={index} value={option}>
+              {option}
             </MenuItem>
           ))}
         </TextField>
-      </div>
+        <TextField
+          id="outlined-select-currency"
+          select
+          label="Ordenar"
+          sx={{ m: 1, width: '25ch' }}
+          size="small"
+          value={"xxx"}
+        // onChange={handleChange}
+        >
+          {planets.map((option, index) => (
+            <MenuItem key={index} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
+      </ContainerFilters>
       {isLoading && <h2>Carregando...</h2>}
       {!isLoading && destinations && tripCards}
     </div>

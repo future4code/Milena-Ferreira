@@ -10,8 +10,10 @@ function Header() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            LabeX
           </Typography>
+          <Button color="inherit">Home</Button>
+          <Button color="inherit">Viagens</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
