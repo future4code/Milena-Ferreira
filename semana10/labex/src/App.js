@@ -11,8 +11,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header />
       {/* <HomePage /> */}
-      <TripsListPage />
-      {/* <ApplicationFormPage /> */}
+      {/* <TripsListPage /> */}
+      <ApplicationFormPage />
     </ThemeProvider>
   );
 }
