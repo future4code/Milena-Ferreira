@@ -6,20 +6,30 @@ import { InputAdornment } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
 
 function ApplicationFormPage() {
-  const [countries, setCountries] = useState()
+  const [countriesList, setCountriesList] = useState([])
+  const [country, setCountry] = useState()
 
   const importCountries = () => {
     axios
-      .get(`https://restcountries.com/v2/all?fields=name`)
-      .then(response => setCountries(response.data))
+      .get(`https://servicodados.ibge.gov.br/api/v1/paises`)
+      .then(response => {
+        setCountriesList(response.data)
+      })
       .catch(error => console.log(error))
   }
-
-  //FAZER FOR LOOP DENTRO DAS LISTAS PARA PEGAR O NOME DOS PAÍSES
 
   useEffect(() => {
     importCountries();
   }, [])
+
+
+  const countryOptions = countriesList.map((country, index) => {
+    return (
+      <MenuItem key={index} value={country.nome}>
+        {country.nome}
+      </MenuItem>
+    )
+  })
 
   return (
     <div>
@@ -37,17 +47,19 @@ function ApplicationFormPage() {
         sx={{ m: 1, width: '25ch' }}
       />
       <TextField
-        id="outlined-select-currency"
+        label="Profissão"
+        size="small"
+        sx={{ m: 1, width: '25ch' }}
+      />
+      <TextField
         select
-        label="Destino"
+        label="País"
         sx={{ m: 1, width: '25ch' }}
         size="small"
         value={"xxx"}
       // onChange={handleChange}
       >
-        <MenuItem>
-          xxxxxx
-        </MenuItem>
+        {countryOptions}
       </TextField>
     </div>
   );

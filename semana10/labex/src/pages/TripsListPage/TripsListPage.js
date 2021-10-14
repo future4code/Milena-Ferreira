@@ -4,40 +4,41 @@ import { Box } from "@material-ui/system";
 import axios from "axios";
 import { ContainerFilters } from "./TripsListPageStyles";
 import { InputAdornment } from "@material-ui/core";
+import { ContainerTripCards } from "./TripsListPageStyles";
 
 function TripsListPage() {
-  const [destinations, setDestinations] = useState([])
+  const [trips, setTrips] = useState([])
   const [isLoading, setIsLoading] = useState(false);
-  const [planets, setPlanets] = useState([
-    "Marte", "Jupiter", "Saturno"
-  ])
+  const [destination, setDestination] = useState("")
+  const [filter, setFilter] = useState("")
 
   useEffect(() => {
     setIsLoading(true)
     axios
       .get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/milena-lara-maryam/trips")
       .then(res => {
-        setDestinations(res.data.trips)
+        setTrips(res.data.trips)
+        console.log("destinations:", res.data.trips)
         setIsLoading(false)
       })
       .catch(err => console.log(err))
   }, [])
 
-  const tripCards = destinations.map((destination => {
+  const tripCards = trips.map((trip => {
     return (
-      <Card sx={{ maxWidth: 300 }} key={destination.id} variant="outlined">
+      <Card sx={{ maxWidth: 300 }} key={trip.id} variant="outlined">
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {destination.date}
+            {trip.date}
           </Typography>
           <Typography variant="h5" component="div">
-            {destination.name}
+            {trip.name}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {destination.durationInDays} dias
+            {trip.durationInDays} dias
           </Typography>
           <Typography variant="body2">
-            {destination.description}
+            {trip.description}
           </Typography>
         </CardContent>
         <CardActions>
@@ -46,6 +47,32 @@ function TripsListPage() {
       </Card>
     )
   }))
+
+  const destinationOptions = trips.map((destination) => {
+    return (
+      <MenuItem key={destination.id} value={destination.planet}>
+        {destination.planet}
+      </MenuItem>
+    )
+  }
+  )
+
+  const handleDestinationOnChange = (event) => {
+    setDestination(event.target.value);
+  }
+
+  const filters = ["Maior valor", "Menor valor", "Destino"]
+  const filterOptions = filters.map((filter) => {
+    return (
+      <MenuItem key={filter} value={filter}>
+        {filter}
+      </MenuItem>
+    )
+  })
+
+  const handleFilterOnChange = (event) => {
+    setFilter(event.target.value);
+  }
 
   return (
     <div>
@@ -67,38 +94,30 @@ function TripsListPage() {
           }}
         />
         <TextField
-          id="outlined-select-currency"
           select
           label="Destino"
           sx={{ m: 1, width: '25ch' }}
           size="small"
-          value={"xxx"}
-        // onChange={handleChange}
+          value={destination}
+          onChange={handleDestinationOnChange}
         >
-          {planets.map((option, index) => (
-            <MenuItem key={index} value={option}>
-              {option}
-            </MenuItem>
-          ))}
+          {destinationOptions}
         </TextField>
         <TextField
-          id="outlined-select-currency"
           select
-          label="Ordenar"
+          label="Ordenar por"
           sx={{ m: 1, width: '25ch' }}
           size="small"
-          value={"xxx"}
-        // onChange={handleChange}
+          value={filter}
+          onChange={handleFilterOnChange}
         >
-          {planets.map((option, index) => (
-            <MenuItem key={index} value={option}>
-              {option}
-            </MenuItem>
-          ))}
+          {filterOptions}
         </TextField>
       </ContainerFilters>
-      {isLoading && <h2>Carregando...</h2>}
-      {!isLoading && destinations && tripCards}
+      <ContainerTripCards>
+        {isLoading && <h2>Carregando...</h2>}
+        {!isLoading && trips && tripCards}
+      </ContainerTripCards>
     </div>
   );
 }
