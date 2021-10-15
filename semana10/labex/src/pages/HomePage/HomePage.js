@@ -8,12 +8,14 @@ function HomePage() {
   return (
     <ContainerTextAndImage>
       <StyledMarsPicture src={MarsPicture} />
-      <Typography variant="h4" gutterBottom component="div">
-        Já pensou em fazer conhecer Marte? Fazer um tour pelas luas de Júpiter? A LabeX te leva!
-      </Typography>
-      <Typography variant="subtitle1" gutterBottom component="div">
-        Clique aqui para ver nossas opções de viagens →
-      </Typography>
+      <div>
+        <Typography variant="h4" gutterBottom component="div">
+          Já pensou em fazer conhecer Marte? Fazer um tour pelas luas de Júpiter? A LabeX te leva!
+        </Typography>
+        <Typography variant="subtitle1" gutterBottom component="div">
+          Clique aqui para ver nossas opções de viagens →
+        </Typography>
+      </div>
     </ContainerTextAndImage>
   );
 }

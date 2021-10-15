@@ -5,24 +5,33 @@ import axios from "axios";
 import { ContainerFilters } from "./TripsListPageStyles";
 import { InputAdornment } from "@material-ui/core";
 import { ContainerTripCards } from "./TripsListPageStyles";
+import { useHistory } from "react-router";
+import { url } from "../../constants/contants";
+import useRequestData from "../../hooks/useRequestData";
 
 function TripsListPage() {
-  const [trips, setTrips] = useState([])
+  const [trips, isLoadingTrips, errorRequest] = useRequestData(`${url}/trips`);
+  // const [trips, setTrips] = useState([])
   const [isLoading, setIsLoading] = useState(false);
   const [destination, setDestination] = useState("")
   const [filter, setFilter] = useState("")
 
-  useEffect(() => {
-    setIsLoading(true)
-    axios
-      .get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/milena-lara-maryam/trips")
-      .then(res => {
-        setTrips(res.data.trips)
-        console.log("destinations:", res.data.trips)
-        setIsLoading(false)
-      })
-      .catch(err => console.log(err))
-  }, [])
+  const history = useHistory();
+
+  const goToTripDetailsPage = (trip) => {
+    history.push(`trips/${trip}`)
+  }
+
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   axios
+  //     .get(`${url}/trips`)
+  //     .then(res => {
+  //       setTrips(res.data.trips)
+  //       setIsLoading(false)
+  //     })
+  //     .catch(err => console.log(err))
+  // }, [])
 
   const tripCards = trips.map((trip => {
     return (
@@ -42,7 +51,19 @@ function TripsListPage() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Inscreva-se!</Button>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={() => goToTripDetailsPage(trip.id)}
+          >
+            Detalhes
+          </Button>
+          <Button
+            variant="contained"
+            size="small"
+          >
+            Inscreva-se!
+          </Button>
         </CardActions>
       </Card>
     )
