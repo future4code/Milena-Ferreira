@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const useRequestData = (url, initialState) => {
+const useRequestData = (url, headers) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
@@ -9,13 +9,13 @@ const useRequestData = (url, initialState) => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(url)
+      .get(url, headers)
       .then(response => {
         setData(response.data);
         setIsLoading(false);
       })
       .catch(error => {
-        setError(error);
+        setError(error.message);
         setIsLoading(false);
       });
   }, [url]);

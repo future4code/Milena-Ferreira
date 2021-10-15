@@ -7,13 +7,17 @@ import { InputAdornment } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { ContainerForm, ContainerButtons } from "./ApplicationFormPageStyles";
+import { baseUrl, countriesUrl, headers } from "../../constants/contants";
 
 function ApplicationFormPage() {
   const history = useHistory();
   const params = useParams();
-  const countries = useRequestData("https://servicodados.ibge.gov.br/api/v1/paises", [])
+  const [countries, isLoadingCountries, errorCountries] = useRequestData(`${countriesUrl}/nome`, headers);
+  const [trip, isLoadingTrip, errorTrip] = useRequestData(`${baseUrl}/trip/${params.trip}`);
 
-  const countryOptions = countries.map((country, index) => {
+  console.log("viagem:", trip)
+
+  const countryOptions = countries && countries.map((country, index) => {
     return (
       <MenuItem key={index} value={country.nome.abreviado}>
         {country.nome.abreviado}
@@ -24,10 +28,11 @@ function ApplicationFormPage() {
   const goBack = () => {
     history.goBack()
   }
+
   return (
     <ContainerForm>
       <Typography variant="h4" gutterBottom component="div">
-        Inscrição para Colônias marcianas
+
       </Typography>
       <TextField
         label="Nome"

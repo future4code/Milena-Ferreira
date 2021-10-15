@@ -4,18 +4,22 @@ import { ContainerFilters } from "./TripsListPageStyles";
 import { InputAdornment } from "@material-ui/core";
 import { ContainerTripCards } from "./TripsListPageStyles";
 import { useHistory } from "react-router";
-import { url } from "../../constants/contants";
+import { baseUrl } from "../../constants/contants";
 import useRequestData from "../../hooks/useRequestData";
 
 function TripsListPage() {
-  const [tripsData, isLoading, errorRequest] = useRequestData(`${url}/trips`, {});
+  const [tripsData, isLoading, errorRequest] = useRequestData(`${baseUrl}/trips`, {});
   const [destinationInput, setDestinationInput] = useState("");
   const [filterInput, setFilterInput] = useState("");
 
   const history = useHistory();
 
-  const goToTripDetailsPage = (trip, []) => {
-    history.push(`trips/${trip}`)
+  const goToTripDetailsPage = (tripId) => {
+    history.push(`trips/${tripId}`)
+  }
+
+  const goToApplicationPage = (tripId) => {
+    history.push(`/application/${tripId}`)
   }
 
   const handleDestinationOnChange = (event) => {
@@ -55,6 +59,7 @@ function TripsListPage() {
           <Button
             variant="contained"
             size="small"
+            onClick={() => goToApplicationPage(trip.id)}
           >
             Inscreva-se!
           </Button>
