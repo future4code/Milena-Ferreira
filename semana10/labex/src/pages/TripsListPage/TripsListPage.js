@@ -8,9 +8,9 @@ import { url } from "../../constants/contants";
 import useRequestData from "../../hooks/useRequestData";
 
 function TripsListPage() {
-  const [trips, isLoading, errorRequest] = useRequestData(`${url}/trips`, []);
-  const [destinationInput, setDestinationInput] = useState("")
-  const [filterInput, setFilterInput] = useState("")
+  const [tripsData, isLoading, errorRequest] = useRequestData(`${url}/trips`, {});
+  const [destinationInput, setDestinationInput] = useState("");
+  const [filterInput, setFilterInput] = useState("");
 
   const history = useHistory();
 
@@ -26,7 +26,8 @@ function TripsListPage() {
     setFilterInput(event.target.value);
   }
 
-  const tripCards = trips.map((trip => {
+
+  const tripCards = tripsData && tripsData.trips && tripsData.trips.map((trip => {
     return (
       <Card sx={{ maxWidth: 300 }} key={trip.id} variant="outlined">
         <CardContent>
@@ -62,14 +63,14 @@ function TripsListPage() {
     )
   }))
 
-  const destinationOptions = (trips && trips.map((destination) => {
+  const destinationOptions = tripsData && tripsData.trips && tripsData.trips.map((destination) => {
     return (
       <MenuItem key={destination.id} value={destination.planet}>
         {destination.planet}
       </MenuItem>
     )
   }
-  ))
+  )
 
   const filters = ["Maior valor", "Menor valor", "Destino"]
   const filterOptions = filters.map((filter) => {
@@ -122,7 +123,7 @@ function TripsListPage() {
       </ContainerFilters>
       <ContainerTripCards>
         {isLoading && <h2>Carregando...</h2>}
-        {!isLoading && trips && tripCards}
+        {!isLoading && tripsData && tripCards}
       </ContainerTripCards>
     </div>
   );
