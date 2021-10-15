@@ -17,7 +17,7 @@ const Router = () => {
           <HomePage />
         </Route>
 
-        <Route exact path={"/application"}>
+        <Route exact path={"/application/:trip"}>
           <ApplicationFormPage />
         </Route>
 

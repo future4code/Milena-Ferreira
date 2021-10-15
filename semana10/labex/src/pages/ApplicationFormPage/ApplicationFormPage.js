@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useRequestData from "../../hooks/useRequestData"
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Typography } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { InputAdornment } from "@material-ui/core";
@@ -10,6 +10,7 @@ import { ContainerForm, ContainerButtons } from "./ApplicationFormPageStyles";
 
 function ApplicationFormPage() {
   const history = useHistory();
+  const params = useParams();
   const countries = useRequestData("https://servicodados.ibge.gov.br/api/v1/paises", [])
 
   const countryOptions = countries.map((country, index) => {

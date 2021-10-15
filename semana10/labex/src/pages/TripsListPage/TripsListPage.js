@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, CardActions, CardContent, MenuItem, TextField, Typography } from "@material-ui/core";
-import { Box } from "@material-ui/system";
-import axios from "axios";
 import { ContainerFilters } from "./TripsListPageStyles";
 import { InputAdornment } from "@material-ui/core";
 import { ContainerTripCards } from "./TripsListPageStyles";
@@ -10,28 +8,23 @@ import { url } from "../../constants/contants";
 import useRequestData from "../../hooks/useRequestData";
 
 function TripsListPage() {
-  const [trips, isLoadingTrips, errorRequest] = useRequestData(`${url}/trips`);
-  // const [trips, setTrips] = useState([])
-  const [isLoading, setIsLoading] = useState(false);
-  const [destination, setDestination] = useState("")
-  const [filter, setFilter] = useState("")
+  const [trips, isLoading, errorRequest] = useRequestData(`${url}/trips`, []);
+  const [destinationInput, setDestinationInput] = useState("")
+  const [filterInput, setFilterInput] = useState("")
 
   const history = useHistory();
 
-  const goToTripDetailsPage = (trip) => {
+  const goToTripDetailsPage = (trip, []) => {
     history.push(`trips/${trip}`)
   }
 
-  // useEffect(() => {
-  //   setIsLoading(true)
-  //   axios
-  //     .get(`${url}/trips`)
-  //     .then(res => {
-  //       setTrips(res.data.trips)
-  //       setIsLoading(false)
-  //     })
-  //     .catch(err => console.log(err))
-  // }, [])
+  const handleDestinationOnChange = (event) => {
+    setDestinationInput(event.target.value);
+  }
+
+  const handleFilterOnChange = (event) => {
+    setFilterInput(event.target.value);
+  }
 
   const tripCards = trips.map((trip => {
     return (
@@ -69,18 +62,14 @@ function TripsListPage() {
     )
   }))
 
-  const destinationOptions = trips.map((destination) => {
+  const destinationOptions = (trips && trips.map((destination) => {
     return (
       <MenuItem key={destination.id} value={destination.planet}>
         {destination.planet}
       </MenuItem>
     )
   }
-  )
-
-  const handleDestinationOnChange = (event) => {
-    setDestination(event.target.value);
-  }
+  ))
 
   const filters = ["Maior valor", "Menor valor", "Destino"]
   const filterOptions = filters.map((filter) => {
@@ -90,10 +79,6 @@ function TripsListPage() {
       </MenuItem>
     )
   })
-
-  const handleFilterOnChange = (event) => {
-    setFilter(event.target.value);
-  }
 
   return (
     <div>
@@ -119,7 +104,7 @@ function TripsListPage() {
           label="Destino"
           sx={{ m: 1, width: '25ch' }}
           size="small"
-          value={destination}
+          value={destinationInput}
           onChange={handleDestinationOnChange}
         >
           {destinationOptions}
@@ -129,7 +114,7 @@ function TripsListPage() {
           label="Ordenar por"
           sx={{ m: 1, width: '25ch' }}
           size="small"
-          value={filter}
+          value={filterInput}
           onChange={handleFilterOnChange}
         >
           {filterOptions}
