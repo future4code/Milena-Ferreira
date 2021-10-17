@@ -12,7 +12,7 @@ import { baseUrl, countriesUrl, headers } from "../../constants/contants";
 function ApplicationFormPage() {
   const history = useHistory();
   const params = useParams();
-  const [countries, isLoadingCountries, errorCountries] = useRequestData(`${countriesUrl}/nome`, headers);
+  const [countries, isLoadingCountries, errorCountries] = useRequestData(`${countriesUrl}/${params.tripId}`, headers);
   const [trip, isLoadingTrip, errorTrip] = useRequestData(`${baseUrl}/trip/${params.trip}`);
 
   console.log("viagem:", trip)
@@ -32,7 +32,7 @@ function ApplicationFormPage() {
   return (
     <ContainerForm>
       <Typography variant="h4" gutterBottom component="div">
-
+        {trip && trip.name && trip.name}
       </Typography>
       <TextField
         label="Nome"

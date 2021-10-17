@@ -14,10 +14,6 @@ function TripsListPage() {
 
   const history = useHistory();
 
-  const goToTripDetailsPage = (tripId) => {
-    history.push(`trips/${tripId}`)
-  }
-
   const goToApplicationPage = (tripId) => {
     history.push(`/application/${tripId}`)
   }
@@ -49,13 +45,6 @@ function TripsListPage() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button
-            variant="outlined"
-            size="small"
-            onClick={() => goToTripDetailsPage(trip.id)}
-          >
-            Detalhes
-          </Button>
           <Button
             variant="contained"
             size="small"

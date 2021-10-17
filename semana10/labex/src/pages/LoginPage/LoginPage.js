@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router";
 import { ThemeProvider } from "@material-ui/core";
 import { theme } from "../../theme";
 import { Container } from "@material-ui/core";
@@ -13,16 +14,40 @@ import { FormControlLabel } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { Link } from "@material-ui/core";
 import { Copyright } from "@material-ui/icons";
+import axios from "axios";
+import { baseUrl } from "../../constants/contants";
 
 function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const history = useHistory();
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const body = {
+      email: email,
+      password: password
+    }
+
+    axios
+      .post(`${baseUrl}/login`, body)
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+        history.push("/admin")
+      })
+      .catch(error => {
+        alert(error.message)
+      })
   };
 
   return (
@@ -50,6 +75,8 @@ function LoginPage() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={handleEmail}
             />
             <TextField
               margin="normal"
@@ -60,6 +87,8 @@ function LoginPage() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={handlePassword}
             />
             <Button
               type="submit"
