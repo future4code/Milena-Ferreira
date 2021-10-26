@@ -1,13 +1,21 @@
 import React from "react";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
-import { InputsContainer } from "./LoginScreenStyles";
+import { InputsContainer } from "./SignUpStyles";
 
 
-const LoginForm = () => {
+const SignUpForm = () => {
   return (
     <form>
       <InputsContainer>
+        <TextField
+          name={"name"}
+          label={"Nome"}
+          type={"text"}
+          margin={"normal"}
+          fullWidth
+          required
+        />
         <TextField
           name={"email"}
           label={"Email"}
@@ -35,4 +43,4 @@ const LoginForm = () => {
   );
 }
 
-export default LoginForm;
+export default SignUpForm;
