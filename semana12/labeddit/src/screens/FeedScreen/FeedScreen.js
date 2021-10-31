@@ -1,10 +1,20 @@
 import React from "react";
 import CardPostFeed from "../../components/CardPostFeed/CardPostFeed";
 import useProtectedPage from "../../hooks/useProtectedPage";
+import useRequestData from "../../hooks/useRequestData";
 import { FeedScreenContainer } from "./FeedScreenStyles";
+import { base_url } from "../../constants/urls"
 
 const FeedScreen = () => {
   useProtectedPage();
+  const posts = useRequestData([], `${base_url}/posts`);
+  console.log("posts: ", posts);
+
+  const cardsPosts = posts && posts.map(post => {
+    return (
+      <CardPostFeed post={post} />
+    )
+  })
 
   const fakePost = {
     "id": "ba669614-8caa-41ae-8bc0-1ea05046ce29",
@@ -26,10 +36,11 @@ const FeedScreen = () => {
 
   return (
     <FeedScreenContainer>
+      {cardsPosts && cardsPosts}
+      {/* <CardPostFeed post={fakePost} />
       <CardPostFeed post={fakePost} />
       <CardPostFeed post={fakePost} />
-      <CardPostFeed post={fakePost} />
-      <CardPostFeed post={fakePost} />
+      <CardPostFeed post={fakePost} /> */}
     </FeedScreenContainer>
   );
 }

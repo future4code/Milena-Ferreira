@@ -27,7 +27,7 @@ const PostCard = ({ post }) => {
   };
 
   return (
-    <PostContainer sx={{ maxWidth: 600 }}>
+    <PostContainer sx={{ minWidth: 350, maxWidth: 750 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "#9cb510" }} aria-label="recipe">

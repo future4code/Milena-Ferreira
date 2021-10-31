@@ -1,11 +1,17 @@
-import { base_url_users } from "../constants/urls";
-import { headers_content } from "../constants/headers";
+import { base_url } from "../constants/urls";
 import axios from "axios";
 import { goToFeed } from "../router/coordinator";
 
+const headers = {
+  headers: {
+    "Content-Type": "application/json"
+  }
+}
+
 export const login = (body, clear, history, setRightButtonText) => {
+
   axios
-    .post(`${base_url_users}/login`, body, headers_content)
+    .post(`${base_url}/users/login`, body, headers)
     .then(response => {
       localStorage.setItem("token", response.data.token);
       clear();
@@ -19,7 +25,7 @@ export const login = (body, clear, history, setRightButtonText) => {
 
 export const signUp = (body, clear, history, setRightButtonText) => {
   axios
-    .post(`${base_url_users}/signup`, body, headers_content)
+    .post(`${base_url}/signup`, body, headers)
     .then(response => {
       localStorage.setItem("token", response.data.token);
       clear();
