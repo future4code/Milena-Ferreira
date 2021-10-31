@@ -1,8 +1,11 @@
 import React from "react";
 import CardDetailsPost from "../../components/CardPostDetails/CardPostDetails";
+import useProtectedPage from "../../hooks/useProtectedPage";
 import { PostScreenContainer } from "./PostScreenStyles";
 
 const PostScreen = () => {
+  useProtectedPage();
+
   const fakePost = {
     "id": "ba669614-8caa-41ae-8bc0-1ea05046ce29",
     "body": `Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over

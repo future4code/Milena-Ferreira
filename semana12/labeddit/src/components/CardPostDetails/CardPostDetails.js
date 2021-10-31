@@ -26,6 +26,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import WorkIcon from '@mui/icons-material/Work';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import Divider from '@mui/material/Divider';
+import CommentToolbar from '../CommentToolbar/CommentToolbar';
 
 const CardDetailsPost = ({ post }) => {
   const [expanded, setExpanded] = React.useState(false);
