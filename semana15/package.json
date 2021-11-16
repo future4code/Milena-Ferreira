@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "exercicio1": "node ./exercicio1.js",
-    "exercicio2": "node ./exercicio2.js",
-    "exercicio3": "node ./exercicio3.js"
+    "ex1": "node ./exercicio1.js",
+    "ex2": "node ./exercicio2.js",
+    "ex3": "node ./exercicio3.js"
   },
   "author": "Milena Lara",
   "license": "ISC"
