@@ -1,5 +1,13 @@
-// // ------------ EXERCÍCIO 1 ------------
-var posts = [
+// ------------ EXERCÍCIO 3 ------------
+
+// a)
+
+type Post = {
+    autor: string,
+    texto: string
+}
+
+const posts: Post[] = [
     {
         autor: "Alvo Dumbledore",
         texto: "Não vale a pena viver sonhando e se esquecer de viver"
@@ -20,11 +28,16 @@ var posts = [
         autor: "Lord Voldemort",
         texto: "Avada Kedavra!"
     }
-];
+]
+
 // b) entrada: array de objetos e string; saída: array de obetos
-function buscarPostsPorAutor(posts, autorInformado) {
-    return posts.filter(function (post) {
-        return post.autor === autorInformado;
-    });
+
+function buscarPostsPorAutor(posts: Post[], autorInformado: string): Post[] {
+    return posts.filter(
+        (post) => {
+            return post.autor === autorInformado
+        }
+    )
 }
-console.log(buscarPostsPorAutor(posts, "D"));
+
+console.log(buscarPostsPorAutor(posts, "Dobby"));
