@@ -1,5 +1,3 @@
-// ------------ EXERCÍCIO 3 ------------
-
 // a) tsc exercicio4.ts
 
 type pokemon = {

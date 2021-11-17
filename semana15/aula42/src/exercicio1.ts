@@ -1,5 +1,3 @@
-// ------------ EXERCÍCIO 1 ------------
-
 // a) Ao tentar atribuir um número à string, um erro é mostrado no editor: "Type 'number' is not assignable to type 'string'."
 
 let minhaString: string = "Minha string!!!!";

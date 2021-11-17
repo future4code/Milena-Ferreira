@@ -1,21 +1,19 @@
-// ------------ EXERCÍCIO 2 ------------
-
 // a) entrada = array de números, saída = objeto
 // b)
 
-function obterEstatisticas(numeros: number[]): {
+type Estatisticas = {
     maior: number,
     menor: number,
     media: number
-} {
-    const numerosOrdenados: number[] = numeros.sort(
-        (a, b) => a - b
-    )
+}
 
-    let soma: number = 0
+function obterEstatisticas(numeros: number[]): Estatisticas {
+    const numerosOrdenados: number[] = numeros.sort((a, b) => a - b);
+
+    let soma: number = 0;
 
     for (let num of numeros) {
-        soma += num
+        soma += num;
     }
 
     const estatisticas = {
@@ -24,7 +22,19 @@ function obterEstatisticas(numeros: number[]): {
         media: soma / numeros.length
     }
 
-    return estatisticas
+    return estatisticas;
 }
 
 console.log(obterEstatisticas([1, 5, 2, 3, 100]));
+
+// c) 
+
+type AmostraDeIdades = {
+    numeros: number[],
+    obterEstatisticas: (numeros: number[]) => Estatisticas
+}
+
+const amostraDeIdades = {
+    numeros: [21, 18, 65, 44, 15, 18],
+    obterEstatisticas
+}
