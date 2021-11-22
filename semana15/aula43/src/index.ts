@@ -26,12 +26,25 @@ app.get("/countries", (req: Request, res: Response) => {
 // endpoint 3
 app.get("countries/search", (req: Request, res: Response) => {
     let result: country[] = countries;
-
     const countryName: string = req.query.name as string;
+    const countryCapital : string = req.query.capital as string;
+    const countryContinent : string = req.query.continent as string;
 
     if (countryName) {
         result = result.filter((country) => {
             country.name === countryName;
+        })
+    }
+
+    if (countryCapital) {
+        result = result.filter((country)=> {
+            country.capital === countryCapital;
+        })
+    }
+
+    if (countryContinent) {
+        result.filter((country)=> {
+            country.continent === countryContinent;
         })
     }
 }
