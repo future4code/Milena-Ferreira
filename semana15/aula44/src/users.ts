@@ -2,11 +2,11 @@ export type user = {
 	id: number,
 	name: string,
 	email: string,
-	type: string,
+	type: UserRoles,
 	age: number
 }
 
-export enum UserType {
+export enum UserRoles {
 	ADMIN = "admin",
 	NORMAL = "normal"
 }
