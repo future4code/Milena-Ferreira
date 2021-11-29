@@ -187,9 +187,110 @@ WHERE (name LIKE "%A%" or name LIKE "%G%") AND salary BETWEEN 350000 and 900000;
 
 ## Exercício 5
 
+**a. Escreva a query que cria essa tabela. Para sinopse, utilize o tipo `TEXT`, pesquise sobre ele se precisar. Explique a query resumidamente.**
+
+```
+CREATE TABLE Film (
+id VARCHAR(255) PRIMARY KEY,
+name VARCHAR(255) NOT NULL,
+summary TEXT NOT NULL,
+release_date DATE NOT NULL,
+review INT NOT NULL
+  check(review >= 0 AND review <= 10)
+);
+
+```
+- `id`: chave primária que deve ter valor único para cada entrada
+- `name`: coluna que aceita strings com até 255 caracteres
+- `summary`: coluna que aceita strings de até 2G, para armazenar textos maiores, como o da sinopse do filme
+- `release_date`: coluna para receber a data de lançamento do filme no formato `YYYY-MM-DD`
+- `review`: coluna para receber a nota do filme, que deve ser entre 0 e 10.
+
+**Crie 4 filmes com as seguintes informações:**
+
+```
+INSERT INTO Film
+VALUES (
+"001",
+"Se Eu Fosse Você",
+"Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos.",
+"2006-01-06",
+7
+);
+
+INSERT INTO Film (id, name, summary, release_date, review)
+VALUES(
+"002", 
+"Doce de mãe",
+"Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões. A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela",
+"2012-12-27",
+10
+);
+
+INSERT INTO Film (id, name, summary, release_date, review)
+VALUES(
+"003", 
+"Dona Flor e Seus Dois Maridos",
+"Dona Flor é uma sedutora professora de culinária casada com Vadinho, que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce.",
+"2012-12-27",
+8
+);
+
+INSERT INTO Film (id, name, summary, release_date, review)
+VALUES(
+"004", 
+"Bacurau",
+"Num futuro próximo, Bacurau, uma pequena cidade brasileira no oeste de Pernambuco, lamenta a perda de sua matriarca, Carmelita (Lia de Itamaracá), que viveu até os 94 anos. Dias depois, seus habitantes aos poucos percebem algo estranho acontecer na região: enquanto drones passeiam pelos céus, estrangeiros chegam pela primeira vez na cidade com planos de exterminar toda a população ali residente, carros são atingidos por tiros e cadáveres começam a aparecer. Os habitantes chegam à conclusão de que estão sendo atacados. Resta identificar o inimigo e criar coletivamente um meio de defesa. ",
+"2019-05-15",
+10
+);
+```
 
 ## Exercício 6
+**Escreva uma query que:**
 
+**a. Retorne o id, título e avaliação a partir de um id específico;**
+```
+SELECT id, name, review FROM Film
+	WHERE id = "001";
+```
+**b. Retorne um filme a partir de um nome específico;**
+```
+SELECT * FROM Film
+	WHERE name LIKE "Bacurau";
+```
+
+**c. Retorne o id, título e sinopse dos filmes com avaliação mínima de `7`**
+```
+SELECT id, name, summary FROM Film
+	WHERE review >= 7;
+```
 
 ## Exercício 7
 
+**a. Retorna um filme cujo título contenha a palavra `vida`**
+```
+SELECT * FROM Film
+	WHERE name LIKE "%vida%";
+```
+
+**b. Realize a pesquisa de um filme, ou seja: pesquise se o termo de busca está contido no título ou na sinopse. Utilize qualquer `TERMO DE BUSCA` para exemplificar.**
+```
+SELECT * FROM Film
+	WHERE name LIKE "%anos%"
+	OR summary LIKE "%anos%";
+```
+
+**c. Procure por todos os filmes que já tenham lançado**
+```
+SELECT * FROM Film
+	WHERE release_date < "2021-11-29";
+```
+
+**d. Procure por algum filme que já tenha lançado, com o termo de busca contido no título ou sinopse e com a avaliação maior do que `7`.**
+```
+SELECT * FROM Film
+	WHERE release_date < CURDATE()
+    AND review > 7
+    AND (name LIKE "%você" OR summary LIKE "%você");
+```
