@@ -175,7 +175,21 @@ WHERE name NOT LIKE "A%" AND salary > 350000;
 
 ```
 SELECT * FROM Actor
-WHERE name LIKE "%g%";
+WHERE name LIKE "%G%";
 ```
 
 **d) Escreva uma query com os atores que tenham a letra "a" ou "A" ou "g" ou "G" no nome e o salário entre R$350.000,00 e R$900.000,00**
+
+```
+SELECT * FROM Actor
+WHERE (name LIKE "%A%" or name LIKE "%G%") AND salary BETWEEN 350000 and 900000;
+```
+
+## Exercício 5
+
+
+## Exercício 6
+
+
+## Exercício 7
+
