@@ -65,7 +65,7 @@ SET
 WHERE id = "005"
 ```
 
-**d). Escreva uma query em que você tente atualizar um dado da tabela que não existe (com um id inválido, por exemplo). Teste, anote e explique o resultado.**
+**d) Escreva uma query em que você tente atualizar um dado da tabela que não existe (com um id inválido, por exemplo). Teste, anote e explique o resultado.**
 
 ```sql
 UPDATE Actor
@@ -130,7 +130,7 @@ SELECT SUM(salary) FROM Actor;
 
 # Exercício 5
 
-**a. Releia a última query. Teste-a. Explique o resultado com as suas palavras**
+**a) Releia a última query. Teste-a. Explique o resultado com as suas palavras**
 
 ```sql
 SELECT COUNT(*), gender
@@ -147,14 +147,14 @@ Resultado:
 
 É uma tabela que agrupa a quantidade de pessoas por gênero. Neste caso, são 4 mulheres e 2 homens.
 
-**b. Faça uma query que retorne somente o id e o nome dos atores em ordem decrescente alfabética**
+**b) Faça uma query que retorne somente o id e o nome dos atores em ordem decrescente alfabética**
 
 ```sql
 SELECT id, name FROM Actor
 ORDER BY name DESC;
 ```
 
-**c. Faça uma query que retorne todos os atores ordenados pelo salário**
+**c) Faça uma query que retorne todos os atores ordenados pelo salário**
 
 ```sql
 SELECT * FROM Actor
@@ -168,7 +168,7 @@ SELECT * FROM Actor
 ORDER BY salary ASC;
 ```
 
-**d. Faça uma query que retorne os atores com os três maiores salarios**
+**d) Faça uma query que retorne os atores com os três maiores salarios**
 
 ```sql
 SELECT * FROM Actor
@@ -176,7 +176,7 @@ ORDER BY salary DESC
 LIMIT 3;
 ```
 
-**e. Faça uma query que retorne a média de salário por gênero**
+**e) Faça uma query que retorne a média de salário por gênero**
 
 ```sql
 SELECT AVG(salary), gender FROM Actor
@@ -271,5 +271,41 @@ SELECT MIN(rating) FROM Film;
 
 - RE: 0
 
-
 # Exercício 8
+
+**Escreva *uma* query que**:
+
+**a) Retorne todos os filmes em ordem alfabética**
+
+```sql
+SELECT * FROM Film
+ORDER BY title ASC;
+```
+
+
+**b) Retorne os 5 primerios filmes em ordem decrescente alfabética**
+
+```sql
+SELECT * FROM Film
+ORDER BY title DESC
+LIMIT 5;
+```
+
+**c) Retorne os 3 filmes mais recentes em cartaz**
+
+```sql
+SELECT * FROM Film
+WHERE release_date <= CURDATE()
+ORDER BY release_date DESC
+LIMIT 3;
+```
+
+
+**d) Retorne os 3 filmes melhor avalidos**
+
+```sql
+SELECT * FROM Film
+ORDER BY rating DESC
+LIMIT 3;
+
+```
