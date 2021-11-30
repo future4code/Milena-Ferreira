@@ -28,7 +28,7 @@
 
 **a) Escreva uma query que crie a atriz  ```Glória Pires```, com o id ```002```, salário R$1.200.000 e data de nascimento 23 de Agosto de 1963**
 
-```
+```sql
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES 
 ("002", "Glória Pires", 1200000, "1963-08-23", "female");
@@ -50,7 +50,7 @@ Error Code: 1136. Column count doesn't match value count at row 1	0.187 sec
 - Tradução: "A contagem de colunas não corresponde à contagem de valores na linha 1"
 - Explicação: é preciso colocar a mesma quantidade de valores que a quantidade dos campos declarados (e na mesma ordem)
 - Código corrigido:
-```
+```sql
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "003", 
@@ -68,7 +68,7 @@ Error Code: 1364. Field 'name' doesn't have a default value
 - Tradução: O campo "nome" não tem um valor padrão
 - Explicação: O campo "nome" precisa ser preenchido obrigatoriamente, ele não tem um valor default que é usado caso o campo esteja em branco.
 - Código corrigido:
-```
+```sql
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "004",
@@ -87,7 +87,7 @@ Error Code: 1292. Incorrect date value: '1950' for column 'birth_date' at row 1
 - Explicação: O valor da data deve ser passado entre aspas [""], no formato "YYY-MM-DD"
 - Código corrigido:
 
-```
+```sql
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "005", 
@@ -100,7 +100,7 @@ VALUES(
 ```
 **f) Crie mais um ator e mais uma atriz**
 
-```
+```sql
 INSERT INTO Actor
 VALUES (
 	"006",
@@ -123,13 +123,13 @@ VALUES (
 ## Exercício 3
 
 **a) Escreva uma query que retorne todas as informações das atrizes**
-```
+```sql
 SELECT * FROM Actor
 WHERE gender = "female";
 ```
 
 **b) Escreva uma query que retorne o salário do ator com o nome `Tony Ramos`**
-```
+```sql
 SELECT salary FROM Actor
 WHERE name = "Tony Ramos";
 ```
@@ -138,7 +138,7 @@ WHERE name = "Tony Ramos";
 Retorna uma tabela vazia. Nenhuma entrada da tabela possui esse valor para "gender".
 
 **d) Escreva uma query que retorne o id, nome e salário de todos que tenham o salário com o valor máximo de R$500.000**
-```
+```sql
 SELECT id, name, salary FROM Actor
 WHERE salary <= 500000;
 ```
@@ -148,14 +148,14 @@ WHERE salary <= 500000;
 - Tradução: ```Código de erro: 1054. Coluna desconhecida 'nome' na 'lista de campos' ```
 - Explicação: durante a criação da tabela, não criamos uma coluna "nome" e sim "name"
 - Correção: 
-```
+```sql
 SELECT id, name from Actor
   WHERE id = "002";
 ```
 
 ## Exercício 4
 
-```
+```sql
 SELECT * FROM Actor
 WHERE (name LIKE "A%" OR name LIKE "J%") AND salary > 300000
 ```
@@ -166,21 +166,21 @@ A query seleciona todas as colunas da tabela Actor cujos valores no campo "name"
 
 **b) Escreva uma query com os atores que não comecem com a letra "A" e tenham o salário maior do que R$350.000,00**
 
-```
+```sql
 SELECT * FROM Actor
 WHERE name NOT LIKE "A%" AND salary > 350000;
 ```
 
 **c) Escreva uma query com os atores que possuam "G" ou "g" em qualquer parte do nome.**
 
-```
+```sql
 SELECT * FROM Actor
 WHERE name LIKE "%G%";
 ```
 
 **d) Escreva uma query com os atores que tenham a letra "a" ou "A" ou "g" ou "G" no nome e o salário entre R$350.000,00 e R$900.000,00**
 
-```
+```sql
 SELECT * FROM Actor
 WHERE (name LIKE "%A%" or name LIKE "%G%") AND salary BETWEEN 350000 and 900000;
 ```
@@ -189,7 +189,7 @@ WHERE (name LIKE "%A%" or name LIKE "%G%") AND salary BETWEEN 350000 and 900000;
 
 **a. Escreva a query que cria essa tabela. Para sinopse, utilize o tipo `TEXT`, pesquise sobre ele se precisar. Explique a query resumidamente.**
 
-```
+```sql
 CREATE TABLE Film (
 id VARCHAR(255) PRIMARY KEY,
 name VARCHAR(255) NOT NULL,
@@ -208,7 +208,7 @@ review INT NOT NULL
 
 **Crie 4 filmes com as seguintes informações:**
 
-```
+```sql
 INSERT INTO Film
 VALUES (
 "001",
@@ -250,18 +250,18 @@ VALUES(
 **Escreva uma query que:**
 
 **a. Retorne o id, título e avaliação a partir de um id específico;**
-```
+```sql
 SELECT id, name, review FROM Film
 	WHERE id = "001";
 ```
 **b. Retorne um filme a partir de um nome específico;**
-```
+```sql
 SELECT * FROM Film
 	WHERE name LIKE "Bacurau";
 ```
 
 **c. Retorne o id, título e sinopse dos filmes com avaliação mínima de `7`**
-```
+```sql
 SELECT id, name, summary FROM Film
 	WHERE review >= 7;
 ```
@@ -269,26 +269,26 @@ SELECT id, name, summary FROM Film
 ## Exercício 7
 
 **a. Retorna um filme cujo título contenha a palavra `vida`**
-```
+```sql
 SELECT * FROM Film
 	WHERE name LIKE "%vida%";
 ```
 
 **b. Realize a pesquisa de um filme, ou seja: pesquise se o termo de busca está contido no título ou na sinopse. Utilize qualquer `TERMO DE BUSCA` para exemplificar.**
-```
+```sql
 SELECT * FROM Film
 	WHERE name LIKE "%anos%"
 	OR summary LIKE "%anos%";
 ```
 
 **c. Procure por todos os filmes que já tenham lançado**
-```
+```sql
 SELECT * FROM Film
 	WHERE release_date < "2021-11-29";
 ```
 
 **d. Procure por algum filme que já tenha lançado, com o termo de busca contido no título ou sinopse e com a avaliação maior do que `7`.**
-```
+```sql
 SELECT * FROM Film
 	WHERE release_date < CURDATE()
     AND review > 7
