@@ -130,6 +130,56 @@ SELECT SUM(salary) FROM Actor;
 
 # Exercício 5
 
+**a. Releia a última query. Teste-a. Explique o resultado com as suas palavras**
+
+```sql
+SELECT COUNT(*), gender
+FROM Actor
+GROUP BY gender
+```
+
+Resultado:
+
+| COUNT(*) | gender |
+|----------|--------|
+| 4        | female |
+| 2        | male   |
+
+É uma tabela que agrupa a quantidade de pessoas por gênero. Neste caso, são 4 mulheres e 2 homens.
+
+**b. Faça uma query que retorne somente o id e o nome dos atores em ordem decrescente alfabética**
+
+```sql
+SELECT id, name FROM Actor
+ORDER BY name DESC;
+```
+
+**c. Faça uma query que retorne todos os atores ordenados pelo salário**
+
+```sql
+SELECT * FROM Actor
+ORDER BY salary;
+```
+
+OU 
+
+```sql
+SELECT * FROM Actor
+ORDER BY salary ASC;
+```
+
+**d. Faça uma query que retorne os atores com os três maiores salarios**
+
+```sql
+```
+
+**e. Faça uma query que retorne a média de salário por gênero**
+
+```sql
+SELECT AVG(salary), gender FROM Actor
+GROUP BY gender;
+```
+
 # Exercício 6
 
 # Exercício 7
