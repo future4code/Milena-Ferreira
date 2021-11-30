@@ -171,6 +171,9 @@ ORDER BY salary ASC;
 **d. Faça uma query que retorne os atores com os três maiores salarios**
 
 ```sql
+SELECT * FROM Actor
+ORDER BY salary DESC
+LIMIT 3;
 ```
 
 **e. Faça uma query que retorne a média de salário por gênero**
@@ -182,6 +185,91 @@ GROUP BY gender;
 
 # Exercício 6
 
+**a) Altere a tabela de `Movie` e adicione um novo parâmetro: `playing_limit_date` que indique a data limite em que o filme será passado no cinema.**
+
+```sql
+ALTER TABLE Film
+ADD playing_limit_date DATE NOT NULL DEFAULT (CURDATE());
+```
+
+**b) Altere a tabela de `Movie` para que o parâmetro `rating` possa aceitar valores não inteiros, como, por exemplo, uma avaliação `8.5`.**
+
+```sql
+ALTER TABLE Film
+CHANGE rating rating DOUBLE NOT NULL;
+```
+
+**c) Atualize dois filmes de tal forma que tenhamos um que ainda esteja em cartaz e um que já tenha saído**
+
+```sql
+UPDATE Film
+SET playing_limit_date = "2021-12-15"
+WHERE id = 1;
+
+UPDATE Film
+SET playing_limit_date = "2017-10-02"
+WHERE id = 2;
+```
+
+**d) Delete algum dos filmes, mas guarde o id. Tente fazer uma query para atualizar a sinopse desse filme que você acabou de deletar (usando o mesmo id). Anote o resultado e explique.**
+
+Resultado: `0 row(s) affected Rows matched: 0  Changed: 0  Warnings: 0`
+
+Nenhuma mensagem de erro foi enviada porque a entrada não existe, então não teve o que alterar.
+
+
 # Exercício 7
+
+**a) Quantos filmes em cartaz possuem avaliações maiores do que `7.5`?**
+
+```sql
+SELECT COUNT(*) FROM Film
+WHERE rating > 7.5;
+```
+
+- RE: 3 filmes
+
+**b) Qual a média das avaliações dos filmes?**
+
+```sql
+SELECT AVG(rating) FROM Film;
+```
+
+- RE: 7.1
+
+**c) Qual a quantidade de filmes em cartaz?**
+
+```sql
+SELECT COUNT(*) FROM Film
+WHERE playing_limit_date <= CURDATE();
+```
+
+- RE: 4
+
+**d) Qual a quantidade de filmes que ainda irão lançar?**
+
+```sql
+SELECT COUNT(*) FROM Film
+WHERE release_date > CURDATE();
+```
+
+- RE: 1
+
+**e) Qual a maior nota dos filmes?**
+
+```sql
+SELECT MAX(rating) FROM Film;
+```
+
+- RE: 10
+
+**f) Qual a menor nota dos filmes?**
+
+```sql
+SELECT MIN(rating) FROM Film;
+```
+
+- RE: 0
+
 
 # Exercício 8
