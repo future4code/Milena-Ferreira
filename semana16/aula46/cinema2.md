@@ -102,6 +102,32 @@ WHERE
 
 # Exercício 4
 
+**a) Escreva uma query que pegue o maior salário de todos os atores e atrizes**
+
+```sql
+SELECT MAX(salary) FROM Actor;
+```
+
+**b) Escreva uma query que pegue o menor salário das atrizes**
+
+```sql
+SELECT MAX(salary) FROM Actor
+	WHERE gender = "female";
+```
+
+**c) Escreva uma query que pegue a quantidade de atrizes**
+
+```sql
+SELECT COUNT(*) FROM Actor
+	WHERE gender = "female";
+```
+
+**d) Escreva uma query que pegue a soma de todos os salários**
+
+```sql
+SELECT SUM(salary) FROM Actor;
+```
+
 # Exercício 5
 
 # Exercício 6
