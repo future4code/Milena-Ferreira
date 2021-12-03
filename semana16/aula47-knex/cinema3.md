@@ -32,3 +32,35 @@ app.get("/users/:name", async (req: Request, res: Response) => {
 
 
 **c. Faça uma função que receba um `gender` retorne a quantidade de itens na tabela Actor com esse `gender`. Para atrizes, `female` e para atores `male`.**
+
+```js
+const groupByGender = async (): Promise<any> => {
+	const result = await connection.raw(`
+		SELECT COUNT(*), gender FROM Actor
+		GROUP BY gender;
+	`);
+
+	return result[0];
+}
+```
+
+Endpoint usando a função:
+```js
+app.get("/genders", async (req: Request, res: Response) => {
+	try {
+		console.log(await groupByGender())
+	} catch {
+		res.status(500).send("Unexpected error");
+	}
+})
+```
+
+
+
+
+```js
+
+```
+```js
+
+```

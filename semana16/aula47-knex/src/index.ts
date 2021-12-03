@@ -31,12 +31,29 @@ const getActorByName = async (name: string): Promise<any> => {
 app.get("/users/:name", async (req: Request, res: Response) => {
 	try {
 		const name = req.params.name;
-
 		console.log(await getActorByName("Juliana Paes"));
 	} catch (error: any) {
-		res.status(500).send("Unexpected error")
+		res.status(500).send("Unexpected error");
 	}
 })
+
+const groupByGender = async (): Promise<any> => {
+	const result = await connection.raw(`
+		SELECT COUNT(*), gender FROM Actor
+		GROUP BY gender;
+	`);
+
+	return result[0];
+}
+
+app.get("/genders", async (req: Request, res: Response) => {
+	try {
+		console.log(await groupByGender())
+	} catch {
+		res.status(500).send("Unexpected error");
+	}
+})
+
 
 // // Assim a chamada funciona fora dos endpoints com .then()/.catch
 // getActorById("001")
