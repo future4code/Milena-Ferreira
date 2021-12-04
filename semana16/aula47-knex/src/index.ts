@@ -20,28 +20,14 @@ app.get("/users/:id", async (req: Request, res: Response) => {
 	try {
 		const id = req.params.id
 
-		console.log("log 4", await getActorById(id))
+		console.log(await getActorById(id))
 
 		res.end()
 	} catch (error: any) {
-		console.log("log ", error.message)
+		console.log(error.message)
 		res.status(500).send("Unexpected error")
 	}
 })
-
-// // Assim a chamada funciona fora dos endpoints com .then()/.catch
-// getActorById("001")
-// 	.then(result => {
-// 		console.log("log 1", result)
-// 	})
-// 	.catch(err => {
-// 		console.log("log 2", err)
-// 	});
-
-// // Assim a chamada funciona fora dos endpoints com await
-// (async () => {
-// 	console.log("log 3", await getActorById("001"))
-// })()
 
 const getActorByName = async (name: string): Promise<any> => {
 	const result = await connection.raw(`
@@ -60,7 +46,7 @@ app.get("/users/:name", async (req: Request, res: Response) => {
 	}
 })
 
-const groupByGender = async (): Promise<any> => {
+const countActorsByGender = async (): Promise<any> => {
 	const result = await connection.raw(`
 		SELECT COUNT(*), gender FROM Actor
 		GROUP BY gender;
@@ -71,7 +57,7 @@ const groupByGender = async (): Promise<any> => {
 
 app.get("/genders", async (req: Request, res: Response) => {
 	try {
-		console.log(await groupByGender())
+		console.log(await countActorsByGender())
 	} catch {
 		res.status(500).send("Unexpected error");
 	}
@@ -108,16 +94,6 @@ app.post("/actor", async (req: Request, res: Response) => {
 	}
 })
 
-//  adicionando diretamente
-//  createActor(
-// 	"015",
-// 	"Tom Hanks",
-// 	300000,
-// 	new Date("1956-07-09"),
-// 	"male"
-// )
-// console.log("ator adicionado ao banco")
-
 const updateSalary = async (
 	id: string,
 	salary: number
@@ -139,28 +115,48 @@ app.put("/salary", async (req: Request, res: Response) => {
 	}
 })
 
-// select gender, avg(salary) as salary from Actor group by gender;
+const deleteActor = async (id: string): Promise<any> => {
+	await connection("Actor")
+		.where({ id })
+		.delete();
+}
+
+app.delete("/actor", async (req: Request, res: Response) => {
+	try {
+		const id = req.query.id as string;
+		await deleteActor(id);
+
+		res.status(200).send("Actor sucessfully deleted from database")
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.Message)
+	}
+})
 
 const getSalaryByGender = async (
 	gender: string
 ): Promise<any> => {
-	await connection("Actor")
-		.select()
-		.avg("salary as average")
-		.where({ gender: gender })
+	return await connection("Actor")
+		.avg("salary")
+		.where({ gender })
 }
 
 app.get("/salary", async (req: Request, res: Response) => {
 	try {
-		const gender = req.params.gender;
+		const gender = req.query.gender as string;
 
-		const response = await getSalaryByGender(gender);
-
-		res.status(200).send(response);
+		if (gender) {
+			const result = await getSalaryByGender(gender);
+			console.log(result)
+			res.status(200).send(result);
+		} else {
+			throw new Error("No query params provided")
+		}
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);
 	}
 })
+
+
 
 const server = app.listen(process.env.PORT || 3003, () => {
 	if (server) {

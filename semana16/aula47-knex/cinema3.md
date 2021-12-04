@@ -90,12 +90,34 @@ app.put("/salary", async (req: Request, res: Response) => {
 
 
 **b. Uma função que receba um id e delete um ator da tabela**
-**c. Uma função que receba um `gender` e devolva a média dos salários de atrizes ou atores desse `gender`**
-
 
 ```js
+const deleteActor = async (id: string): Promise<any> => {
+	await connection("Actor")
+		.where({ id })
+		.delete();
 
+	console.log("Deletado com sucesso");
+}
 ```
+
+Endpoint:
+
+```js
+app.delete("/actor", async (req: Request, res: Response) => {
+	try {
+		const id = req.query.id as string;
+		await deleteActor(id);
+
+		res.status(200).send("Actor sucessfully deleted from database")
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.Message)
+	}
+})
+```
+
+
+**c. Uma função que receba um `gender` e devolva a média dos salários de atrizes ou atores desse `gender`**
 
 ```js
 
