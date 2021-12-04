@@ -36,7 +36,7 @@ app.get("/users/:name", async (req: Request, res: Response) => {
 ```js
 const groupByGender = async (): Promise<any> => {
 	const result = await connection.raw(`
-		SELECT COUNT(*), gender FROM Actor
+		SELECT COUNT(*) AS count, gender FROM Actor
 		GROUP BY gender;
 	`);
 
@@ -54,13 +54,49 @@ app.get("/genders", async (req: Request, res: Response) => {
 	}
 })
 ```
+# Exercício 2
+
+**Utilize os *query builders* para criar funções de Typescript que realizem as operações abaixo. Tente prestar atenção nos tipos das variáveis de entrada e de saída.**
+
+**a. Uma função que receba um salário e um id e realiza a atualização do salário do ator em questão**
+
+```js
+const updateSalary = async (
+	id: string,
+	salary: number
+): Promise<void> => {
+	await connection("Actor")
+		.update({
+			salary: salary
+		})
+		.where("id", id)
+}
+```
+
+Endpoint:
+
+```js
+app.put("/salary", async (req: Request, res: Response) => {
+	try {
+		const { id, salary } = req.body;
+		await updateSalary(id, salary);
+		res.status(200).send("Salary updated successfully");
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message);
+	}
+})
+
+```
 
 
+**b. Uma função que receba um id e delete um ator da tabela**
+**c. Uma função que receba um `gender` e devolva a média dos salários de atrizes ou atores desse `gender`**
 
 
 ```js
 
 ```
+
 ```js
 
 ```
