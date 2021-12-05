@@ -1,12 +1,6 @@
-import express, { Express, Request, Response } from "express";
-import cors from "cors";
-import { AddressInfo } from "net";
+// apenas para referências de estudo
+
 import connection from "./connection";
-
-const app: Express = express();
-
-app.use(express.json());
-app.use(cors());
 
 const countActorsByGender = async (gender: string): Promise<any> => {
 	const result = await connection.raw(`
@@ -33,12 +27,3 @@ const getActorByName = async (name: string): Promise<any> => {
 
 	return result[0][0];
 };
-
-const server = app.listen(process.env.PORT || 3003, () => {
-	if (server) {
-		const address = server.address() as AddressInfo;
-		console.log(`Server is running in http://localhost:${address.port}`);
-	} else {
-		console.error(`Failure upon starting server.`);
-	}
-});
