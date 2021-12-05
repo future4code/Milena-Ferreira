@@ -34,6 +34,25 @@ const createActor = async (
 		.into("Actor");
 };
 
+const createMovie = async (
+	id: string,
+	title: string,
+	summary: string,
+	release_date: Date,
+	rating: number,
+	playing_limit_date: Date
+): Promise<void> => {
+	await connection("Movie")
+		.insert({
+			id,
+			title,
+			summary,
+			release_date,
+			rating,
+			playing_limit_date
+		})
+};
+
 const deleteActor = async (id: string): Promise<void> => {
 	await connection("Actor")
 		.where({ id })
@@ -55,6 +74,13 @@ const getActorByName = async (name: string): Promise<any> => {
 
 	return result[0][0];
 };
+
+const getAllMovies = async (): Promise<any> => {
+	const result = await connection("Movie")
+		.select()
+
+	return result;
+}
 
 const getAverageSalaryByGender = async (
 	gender: string
@@ -125,8 +151,17 @@ app.get("/actor/:id", async (req: Request, res: Response) => {
 		res.status(200).send(result)
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);
-	}
-})
+	};
+});
+
+app.get("/movie/all", async (req: Request, res: Response) => {
+	try {
+		const result = await getAllMovies();
+		res.status(200).send(result);
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message);
+	};
+});
 
 // pega média de salários de acordo com gender
 app.get("/salary", async (req: Request, res: Response) => {
@@ -141,8 +176,8 @@ app.get("/salary", async (req: Request, res: Response) => {
 
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);
-	}
-})
+	};
+});
 
 app.post("/actor", async (req: Request, res: Response) => {
 	try {
@@ -154,8 +189,39 @@ app.post("/actor", async (req: Request, res: Response) => {
 		res.status(200).send("Actor successfully created");
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);
-	}
-})
+	};
+});
+
+app.post("/movie", async (req: Request, res: Response) => {
+	try {
+		const {
+			title,
+			summary,
+			release_date,
+			rating,
+			playing_limit_date
+		}
+			= req.body;
+
+		const releaseDate = new Date(release_date);
+		const playingLimitDate = new Date(playing_limit_date);
+		const id = new Date().getTime().toString();
+
+		await createMovie(
+			id,
+			title,
+			summary,
+			releaseDate,
+			rating,
+			playingLimitDate
+		);
+
+		res.status(200).send("Movie successfully added to database");
+
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message)
+	};
+});
 
 app.put("/actor", async (req: Request, res: Response) => {
 	try {
@@ -164,8 +230,8 @@ app.put("/actor", async (req: Request, res: Response) => {
 		res.status(200).send("Salary updated successfully");
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);
-	}
-})
+	};
+});
 
 const server = app.listen(process.env.PORT || 3003, () => {
 	if (server) {
