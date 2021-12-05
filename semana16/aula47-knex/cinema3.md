@@ -120,5 +120,121 @@ app.delete("/actor", async (req: Request, res: Response) => {
 **c. Uma função que receba um `gender` e devolva a média dos salários de atrizes ou atores desse `gender`**
 
 ```js
+const getSalaryByGender = async (
+	gender: string
+): Promise<any> => {
+	return await connection("Actor")
+		.avg("salary")
+		.where({ gender })
+}
+```
+Enpoint:
 
+```js
+app.get("/salary", async (req: Request, res: Response) => {
+	try {
+		const gender = req.query.gender as string;
+
+		if (gender) {
+			const result = await getSalaryByGender(gender);
+			console.log(result)
+			res.status(200).send(result);
+		} else {
+			throw new Error("No query params provided")
+		}
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message);
+	}
+})
+```
+
+# Exercício 3
+
+**a. Criar endpoint de pegar o ator pelo `id` com um método GET que receba como *path param* o *id* do ator cujas informações queremos pegar.**
+
+```js
+app.get("/actor/:id", async (req: Request, res: Response) => {
+	try {
+		const id = req.params.id
+
+		const result = await connection("Actor")
+			.select()
+			.where({ id: id });
+
+		res.status(200).send(result[0]);
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message);
+	}
+})
+```
+
+**b. Crie um endpoint agora com as seguintes especificações:**
+
+- Deve ser um GET (`/actor`)
+- Receber o gênero como um *query param* (`/actor?gender=`)
+- Devolver a quantidade de atores/atrizes desse gênero
+
+```js
+app.get("/actor", async (req: Request, res: Response) => {
+	try {
+		const gender = req.query.gender as string;
+
+		if (gender) {
+			const result = await connection("Actor")
+				.count(`* as count`)
+				.where({ gender });
+
+			res.status(200).send(result[0]);
+		}
+
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message);
+	}
+})
+```
+
+# Exercício 4
+
+**Crie um endpoint para cada uma das especificações abaixo:**
+
+**a.**
+- Deve ser um PUT (`/actor`)
+- Receber o salário e o id pelo body
+- Simplesmente atualizar o salário do ator com id em questão
+
+
+```js
+app.put("/actor", async (req: Request, res: Response) => {
+	try {
+		const { id, salary } = req.body;
+
+		await connection("Actor")
+			.where({ id })
+			.update({ salary });
+
+		res.status(200).send("Salary updated successfully");
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message);
+	}
+})
+```
+
+**b.** 
+- Deve ser um DELETE (`/actor/:id`)
+- Receber id do ator como *path param*
+- Simplesmente deletar o ator da tabela
+
+```js
+app.delete("/actor/:id", async (req: Request, res: Response) => {
+	try {
+		const id = req.params.id;
+		await connection("Actor")
+			.where({ id })
+			.delete();
+
+		res.status(200).send("Actor sucessfully deleted from database")
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.Message)
+	}
+})
 ```
