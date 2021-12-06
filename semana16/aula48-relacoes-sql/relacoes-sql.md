@@ -1,0 +1,90 @@
+# Exercício 1
+
+**a. Explique o que é uma chave estrangeira**
+É uma coluna extra que colocamos em uma tabela para que ela possa referenciar a chave primária de outra tabela, tornando assim os itens correlacionados.
+
+**b. Crie a tabela e, ao menos, uma avaliação para cada um dos filmes**
+
+```sql
+CREATE TABLE Rating (
+	id VARCHAR(255) PRIMARY KEY,
+    comment TEXT NOT NULL,
+    rate FLOAT NOT NULL,
+    movie_id VARCHAR(255),
+    FOREIGN KEY (movie_id) REFERENCES Movie(id)
+);
+
+SELECT * FROM Rating;
+
+INSERT INTO Rating
+VALUES
+	('001', 'Adorei o filme', 9, '004'),
+    ('002', 'Meu filme favorito', 10, '1638727789372'),
+	('003', 'Podre, pior filme que já vi', 0, '005'),
+    ('004', 'É engraçadinho, dá pra passar a tarde', 6, '002');
+```
+
+**c. Tente criar uma avaliação para um filme que não existe (ou seja, um id inválido). Anote e explique o resultado da query.**
+
+```
+Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`maryam-milena-lara`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`))
+```
+
+Ele não permite que a entrada seja criada porque a movie_id precisa existir na tabela à qual ela faz referência.
+
+**d. Altere a tabela de filmes para que ela não tenha mais uma coluna chamada rating.**
+
+```sql
+ALTER TABLE Movie DROP COLUMN rating;
+```
+
+**e. Tente apagar um filme que possua avaliações. Anote e explique o resultado da query.**
+
+
+```
+Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`maryam-milena-lara`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`))
+```
+
+Não é possível apagar esse dado porque ele está vinculado a outro dado de outra tabela. É preciso deletar o dado na outra tabela (Rating) primeiro para depois apagar na tabela Movie.
+
+
+# Exercício 2
+
+**a. Explique, com as suas palavras, essa tabela**
+É uma tabela que tem apenas chaves estrangeiras, referenciando elementos de outras duas tabelas. Ela faz o link entre a tabela de atores e a de filmes. Assim, um ator pode ser vinculado a mais de uma filme e vice-versa.
+
+
+**b. Crie, ao menos, 6 relações nessa tabela**
+
+```sql
+INSERT INTO MovieCast (movie_id, actor_id)
+	VALUES
+		('001', '001'), 
+		('001', '002'),
+		('002', '001'),
+		('002', '003'),
+		('003', '005'),
+		('004', '005'),
+		('004', '004');
+```
+
+**c. Tente criar uma relação com um filme ou um ator inexistente. Anote e explique o resultado da query**
+
+```
+Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`maryam-milena-lara`.`MovieCast`, CONSTRAINT `MovieCast_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`))
+```
+
+Foi inserido um valor como foreign key que não existe como primary key na tabela a qual ela faz referência. Toda FK precisa ser uma PK que existe.
+
+
+**d. Tente apagar um ator que possua uma relação nessa tabela. Anote e explique o resultado da query**
+
+```
+Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`maryam-milena-lara`.`MovieCast`, CONSTRAINT `MovieCast_ibfk_2` FOREIGN KEY (`actor_id`) REFERENCES `Actor` (`id`))
+```
+Esse dado não pode ser deletado porque ele é utilizado em outra tabela, ou seja, outra tabela faz referência a ele como foreign key.
+
+# Exercício 3
+
+
+# Exercício 4
