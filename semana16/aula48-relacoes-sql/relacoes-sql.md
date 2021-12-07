@@ -112,3 +112,44 @@ FROM
 
 
 # Exercício 4
+
+**a. Escreva uma query que retorne todos os filmes e suas avaliações (com essa avaliação existindo ou não). A sua query deve retornar somente o nome, id, nota do filme e comentário**
+
+```sql
+SELECT
+	m.id as movie_id,
+	m.title,
+	r.rate as rating,
+    r.comment
+FROM
+	Movie m
+		LEFT JOIN
+	Rating r ON r.movie_id = m.id;
+```
+
+**b. Escreva uma query que retorne todas as relações de elenco, junto com as informações do filme. A sua query deve retornar o id do filme, título do filme e id do ator**
+
+```sql
+SELECT
+	m.id as "Movie ID",
+	m.title "Movie Title",
+  mc.actor_id as "Actor ID"
+FROM
+	Movie m
+		RIGHT JOIN
+	MovieCast mc ON mc.movie_id = m.id;
+```
+
+**c. Escreva uma query que retorne a média das avaliações de todos os filmes agrupada em relação aos filmes (mesmo que ele não tenha sido avaliado ainda)**
+
+```sql
+SELECT
+	m.id as "Movie ID",
+	m.title as "Movie title",
+    AVG(r.rate) as "Avaliação média"
+FROM
+	Movie m
+		LEFT JOIN
+	Rating r ON r.movie_id = m.id
+GROUP BY m.id;
+```
