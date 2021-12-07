@@ -86,5 +86,29 @@ Esse dado não pode ser deletado porque ele é utilizado em outra tabela, ou sej
 
 # Exercício 3
 
+```
+SELECT * FROM Movie 
+INNER JOIN Rating ON Movie.id = Rating.movie_id;
+```
+
+**a. Explique, com suas palavras, a query acima. O que é o operador `ON`?**
+
+Essa query mostra  todos os campos das duas tabelas (`Movie` e `Rating`).
+O operador `ON` é para indicar que a foreign key `movie_id` da tabela `Rating` é o mesmo campo que a primary key `id` na tabela `Movie`.
+
+**b. Escreva uma query que retorne somente o nome, id e nota de avaliação dos filmes que já foram avaliados.**
+
+```sql
+SELECT * FROM Movie 
+INNER JOIN Rating ON Movie.id = Rating.movie_id;
+
+SELECT 
+    Movie.id AS movie_id, title, rate
+FROM
+    Movie
+        INNER JOIN
+    Rating ON Rating.movie_id = Movie.id;
+```
+
 
 # Exercício 4
