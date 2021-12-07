@@ -153,3 +153,57 @@ FROM
 	Rating r ON r.movie_id = m.id
 GROUP BY m.id;
 ```
+
+# Exercício 5
+
+**a. Explique, com suas palavras essa query. Por que há a necessidade de dois `JOIN`?**'
+
+As tabelas de `Actor` e `Movie` não estão relacionadas entre si, mas cada uma delas está relacionada à tabela MovieCast. Assim, para juntar as informações de `Actor` e `Movie`, é preciso fazer o `JOIN` das duas com a tabela em comum entre elas, `MovieCast`.
+
+**b. Altere a query para que ela retorne o id e o título do filme, e o id e o nome do ator. Coloque `alias` para facilitar o endentimento do retorno da query**'
+
+```sql
+SELECT 
+    m.id as "Movie ID",
+	m.title as "Movie Title",
+    a.id as "Actor ID",
+    a.name as "Actor name"
+FROM
+    Movie m
+        LEFT JOIN
+    MovieCast mc ON m.id = mc.movie_id
+        JOIN
+    Actor a ON a.id = mc.actor_id;
+```
+
+**c. A query abaixo *deveria* ser a resposta do item b. Tente rodá-la. Anote e explique o resultado.**'
+   
+```sql
+SELECT m.id as movie_id, m,title, a.id as actor_id, a.name FROM Movie m
+LEFT JOIN MovieCast mc ON m.id = mc.movie_id
+JOIN Actor a ON a.id = mc.actor_id;
+```
+
+ERRO: `Error Code: 1054. Unknown column 'm' in 'field list'`
+
+Houve um erro de digitação, onde deveria estar escrito `m.title`, está escrito `m,title`. Assim, em vez de o MySQL interpretar que se trata do campo `title` da tabela Movie, ele entende que são dois campos separados: `m` e `title`, e não existe o campo `m` em nenhuma das tabelas.
+    
+**d. **Desafio:** Faça uma query que retorne todos os filmes com o nome de seus atores e as suas avaliações (nota e comentário)**
+
+```sql
+SELECT
+	m.id as movie_id,
+    m.title as movie_title,
+    a.id as actor_id,
+    a.name as actor_name,
+    r.rate as movie_rating,
+    r.comment
+FROM
+	Movie m 
+		LEFT JOIN
+	Rating r ON r.movie_id = m.id
+		JOIN
+    MovieCast mc ON mc.movie_id = m.id
+		JOIN
+	Actor a ON mc.actor_id = a.id;
+```
