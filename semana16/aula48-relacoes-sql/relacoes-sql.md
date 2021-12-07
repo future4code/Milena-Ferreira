@@ -207,3 +207,13 @@ FROM
 		JOIN
 	Actor a ON mc.actor_id = a.id;
 ```
+
+# Exercício 6
+
+*a. Que tipo de relação é essa?*
+
+*b. Explicite a query que você usou para criar a tabela*
+
+*c. Crie ao menos 2 óscar para cada um dos filmes* 
+
+*d. Faça uma query que retorne todos os filmes e seus respectivos óscar*
