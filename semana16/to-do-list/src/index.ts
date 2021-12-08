@@ -44,6 +44,14 @@ const createUser = async (
 		);
 }
 
+const getTaskById = async (id: string): Promise<any> => {
+	const result = await connection("Task")
+		.select()
+		.where({ id });
+
+	return result[0];
+}
+
 const getUserById = async (id: string): Promise<any> => {
 	const result = await connection("ToDoListUser")
 		.select()
@@ -66,6 +74,16 @@ const editUser = async (
 		})
 		.where({ id });
 }
+
+app.get("/task/:id", async (req: Request, res: Response) => {
+	try {
+		const id = req.params.id;
+		const result = await getTaskById(id);
+		res.status(200).send(result);
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message);
+	}
+})
 
 app.get("/user/:id", async (req: Request, res: Response) => {
 	try {
