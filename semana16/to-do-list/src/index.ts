@@ -45,8 +45,23 @@ const createUser = async (
 }
 
 const getAllUsers = async (): Promise<any> => {
-	const result = await connection("ToDoListUser")
+	const users = await connection("ToDoListUser")
 		.select();
+	const result = users.map(user => {
+		return { id: user.id, nickname: user.nickname }
+	})
+
+	return result;
+}
+
+const getUsersQuery = async (query: string): Promise<any> => {
+	const users = await connection("ToDoListUser")
+		.select()
+		.where({ query });
+
+	const result = users.map(user => {
+		return { id: user.id, nickname: user.nickname }
+	})
 
 	return result;
 }
@@ -59,12 +74,20 @@ const getTaskById = async (id: string): Promise<any> => {
 	return result[0];
 }
 
+const getTaskByCreator = async (creator_id: string): Promise<any> => {
+	const result = await connection("Task")
+		.select()
+		.where({ creator_id })
+
+	return result;
+}
+
 const getUserById = async (id: string): Promise<any> => {
 	const result = await connection("ToDoListUser")
 		.select()
 		.where({ id });
 
-	return result[0];
+	return { "id": result[0].id, "nickname": result[0].nickname }
 }
 
 const editUser = async (
@@ -82,6 +105,16 @@ const editUser = async (
 		.where({ id });
 }
 
+app.get("/task", async (req: Request, res: Response) => {
+	try {
+		const creator_id: string = req.query.creator_id as string;
+		const result = await getTaskByCreator(creator_id);
+		res.status(200).send({ tasks: result });
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message);
+	}
+})
+
 app.get("/task/:id", async (req: Request, res: Response) => {
 	try {
 		const id = req.params.id;
@@ -92,10 +125,24 @@ app.get("/task/:id", async (req: Request, res: Response) => {
 	}
 })
 
+app.get("/user", async (req: Request, res: Response) => {
+	try {
+		const { name, nickname, email } = req.query;
+
+		if (name?.length !== 0) {
+			const result = await getUsersQuery(name as string);
+		}
+
+		res.status(200).send({ users: result });
+	} catch (error: any) {
+		res.status(500).send(error.sqlMessage || error.message);
+	}
+})
+
 app.get("/user/all", async (req: Request, res: Response) => {
 	try {
 		const result = await getAllUsers();
-		res.status(200).send(result);
+		res.status(200).send({ users: result });
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);
 	}
