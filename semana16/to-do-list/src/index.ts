@@ -69,10 +69,11 @@ const getAllUsers = async (): Promise<any> => {
 	return result;
 }
 
-const getUsersQuery = async (query: string): Promise<any> => {
+const searchUser = async (search: string): Promise<any> => {
 	const users = await connection("ToDoListUser")
 		.select()
-		.where({ query });
+	// .where({ search }); // sqlMsg: Unknown column 'search' in 'where clause'
+	// .where({ `${search}`: `${search}` }); // erro ao compilar
 
 	const result = users.map(user => {
 		return { id: user.id, nickname: user.nickname }
@@ -136,10 +137,10 @@ app.get("/task/:id", async (req: Request, res: Response) => {
 
 app.get("/user", async (req: Request, res: Response) => {
 	try {
-		const { name, nickname, email } = req.query;
+		const search = req.query.search as string;
 
-		if (name?.length !== 0) {
-			const result = await getUsersQuery(name as string);
+		if (search.length !== 0) {
+			const result = await searchUser(search as string);
 			res.status(200).send({ users: result });
 		}
 
