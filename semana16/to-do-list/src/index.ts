@@ -44,6 +44,21 @@ const createUser = async (
 		);
 }
 
+const editUser = async (
+	id: string,
+	name: string,
+	nickname: string,
+	email: string
+): Promise<void> => {
+	await connection("ToDoListUser")
+		.update({
+			name,
+			nickname,
+			email
+		})
+		.where({ id });
+}
+
 const getAllUsers = async (): Promise<any> => {
 	const users = await connection("ToDoListUser")
 		.select();
@@ -76,7 +91,16 @@ const getTaskById = async (id: string): Promise<any> => {
 
 const getTaskByCreator = async (creator_id: string): Promise<any> => {
 	const result = await connection("Task")
-		.select()
+		.select({
+			task_id: "Task.id",
+			title: "Task.title",
+			description: "Task.description",
+			status: "Task.status",
+			deadline: "Task.deadline",
+			creator_id: "Task.id",
+			nickname: "ToDoListUser.nickname"
+		})
+		.join("ToDoListUser", "Task.creator_id", "=", "ToDoListUser.id")
 		.where({ creator_id })
 
 	return result;
@@ -88,21 +112,6 @@ const getUserById = async (id: string): Promise<any> => {
 		.where({ id });
 
 	return { "id": result[0].id, "nickname": result[0].nickname }
-}
-
-const editUser = async (
-	id: string,
-	name: string,
-	nickname: string,
-	email: string
-): Promise<void> => {
-	await connection("ToDoListUser")
-		.update({
-			name,
-			nickname,
-			email
-		})
-		.where({ id });
 }
 
 app.get("/task", async (req: Request, res: Response) => {
@@ -131,9 +140,9 @@ app.get("/user", async (req: Request, res: Response) => {
 
 		if (name?.length !== 0) {
 			const result = await getUsersQuery(name as string);
+			res.status(200).send({ users: result });
 		}
 
-		res.status(200).send({ users: result });
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);
 	}
@@ -218,7 +227,6 @@ app.put("/user", async (req: Request, res: Response) => {
 		res.status(500).send(error.sqlMessage || error.message);
 	}
 })
-
 
 const server = app.listen(process.env.PORT || 3003, () => {
 	if (server) {
