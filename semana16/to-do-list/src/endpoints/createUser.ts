@@ -23,6 +23,7 @@ const createUser = async (req: Request, res: Response) => {
 		const { name, nickname, email } = req.body;
 
 		res.status(200).send("User successfully created");
+
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);
 	}

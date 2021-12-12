@@ -4,8 +4,20 @@ import selectTaskById from "../data/selectTaskById";
 const getTaskById = async (req: Request, res: Response) => {
 	try {
 		const id = req.params.id;
-		const result = await selectTaskById(id);
-		res.status(200).send(result);
+
+		const task = await selectTaskById(id);
+		res.status(200).send(task);
+
+		// const day = task.deadline.getDate();
+		// const month = task.deadline.getMonth();
+		// const year = task.deadline.getFullYear();
+		// const formattedDate = `${day}/${month}/${year}`
+
+		// res.status(200).send({
+		// 	...task,
+		// 	deadline: formattedDate
+		// });
+
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);
 	}
