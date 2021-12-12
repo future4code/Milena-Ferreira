@@ -15,21 +15,21 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/task", getTaskByCreator)
+app.get("/task", getTaskByCreator);
 
-app.get("/task/:id", getTaskById)
+app.get("/task/:id", getTaskById);
 
-app.get("/user", searchUser)
+app.get("/user", searchUser);
 
-app.get("/user/all", getAllUsers)
+app.get("/user/all", getAllUsers);
 
-app.get("/user/:id", getUserById)
+app.get("/user/:id", getUserById);
 
-app.post("/user/edit/:id", editUser)
+app.post("/user/edit/:id", editUser);
 
-app.put("/task", createTask)
+app.put("/task", createTask);
 
-app.put("/user", createUser)
+app.put("/user", createUser);
 
 const server = app.listen(process.env.PORT || 3003, () => {
 	if (server) {

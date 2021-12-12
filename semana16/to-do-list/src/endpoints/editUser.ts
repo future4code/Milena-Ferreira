@@ -16,6 +16,7 @@ const editUser = async (req: Request, res: Response) => {
 		}
 
 		await updateUser(
+			req.params.id,
 			req.body.name,
 			req.body.nickname,
 			req.body.email
