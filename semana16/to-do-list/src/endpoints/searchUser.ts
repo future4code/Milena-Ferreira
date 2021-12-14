@@ -3,11 +3,12 @@ import selectUser from "../data/selectUser";
 
 const searchUser = async (req: Request, res: Response) => {
 	try {
-		const search = req.query.search as string;
+		const query = req.query.query as string || "%";
 
-		if (search.length !== 0) {
-			const result = await selectUser(search as string);
-			res.status(200).send({ users: result });
+		if (query) {
+			const users = await selectUser(query);
+
+			res.status(200).send(users)
 		}
 
 	} catch (error: any) {

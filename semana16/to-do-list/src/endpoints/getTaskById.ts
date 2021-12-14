@@ -6,17 +6,16 @@ const getTaskById = async (req: Request, res: Response) => {
 		const id = req.params.id;
 
 		const task = await selectTaskById(id);
-		res.status(200).send(task);
 
-		// const day = task.deadline.getDate();
-		// const month = task.deadline.getMonth();
-		// const year = task.deadline.getFullYear();
-		// const formattedDate = `${day}/${month}/${year}`
+		const day = task.deadline.getDate();
+		const month = task.deadline.getMonth() + 1;
+		const year = task.deadline.getFullYear();
+		const formattedDate = `${day}/${month}/${year}`
 
-		// res.status(200).send({
-		// 	...task,
-		// 	deadline: formattedDate
-		// });
+		res.status(200).send({
+			...task,
+			deadline: formattedDate
+		});
 
 	} catch (error: any) {
 		res.status(500).send(error.sqlMessage || error.message);

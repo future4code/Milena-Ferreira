@@ -5,31 +5,45 @@ import createTask from "./endpoints/createTask";
 import createUser from "./endpoints/createUser";
 import editUser from "./endpoints/editUser";
 import getAllUsers from "./endpoints/getAllUsers";
-import getTaskByCreator from "./endpoints/getTaskByCreator";
+import getTaskByCreatorId from "./endpoints/getTaskByCreatorId";
 import getTaskById from "./endpoints/getTaskById";
 import getUserById from "./endpoints/getUserById";
 import searchUser from "./endpoints/searchUser";
+import assignUser from "./endpoints/assignUser";
 
 const app: Express = express();
 
 app.use(express.json());
 app.use(cors());
 
-app.get("/task", getTaskByCreator);
+// 1. Criar usuário 
+app.put("/user", createUser);
 
-app.get("/task/:id", getTaskById);
-
+// 8. Pesquisar usuário 
 app.get("/user", searchUser);
 
+// 6. Pegar todos os usuários
 app.get("/user/all", getAllUsers);
 
+// 2. Pegar usuário pelo id
 app.get("/user/:id", getUserById);
 
+// 3. Editar usuário
 app.post("/user/edit/:id", editUser);
 
+// 4. Criar tarefa
 app.put("/task", createTask);
 
-app.put("/user", createUser);
+// 5. Pegar tarefa pelo id
+app.get("/task/:id", getTaskById);
+
+// 7. Pegar tarefas criadas por um usuário
+app.get("/task", getTaskByCreatorId);
+
+
+// 9. Atribuir um usuário responsável a uma tarefa
+app.post("/task/responsible", assignUser)
+
 
 const server = app.listen(process.env.PORT || 3003, () => {
 	if (server) {
