@@ -40,9 +40,20 @@ app.get("/task/:id", getTaskById);
 // 7. Pegar tarefas criadas por um usuário
 app.get("/task", getTaskByCreatorId);
 
+// ENDPOINTS A FAZER
 
 // 9. Atribuir um usuário responsável a uma tarefa
-app.post("/task/responsible", assignUser)
+// 10. Pegar usuários responsáveis por uma tarefa
+// 11. Pegar tarefa pelo id
+// 12. Atualizar o status da tarefa
+// 13. Pegar todas as tarefas por status
+// 14. Pegar todas as tarefas atrasadas
+// 15. Retirar um usuário responsável de uma tarefa
+// 16. Atribuir mais de um responsável a uma tarefa
+// 17. Procurar tarefa por termos
+// 18, Atualizar o status de várias tarefas
+// 19. Deletar tarefa
+// 20. Deletar usuário
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
