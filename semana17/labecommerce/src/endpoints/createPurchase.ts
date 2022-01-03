@@ -1,25 +1,25 @@
 import { Request, Response } from "express";
 import insertPurchase from "../data/insertPurchase";
-import selectProducts from "../data/selectProducts";
+import selectProduct from "../data/selectProduct";
 
 const createPurchase = async (
 	req: Request,
 	res: Response
 ): Promise<void> => {
 	try {
-		const id: string = new Date().getTime().toString();
+		// const id: string = new Date().getTime().toString();
 
-		const totalPrice = 0; // ??????
+		// const product = await selectProduct(req.body.product_id);
+		// const price = product[0].price;
+		// await insertPurchase(
+		// 	id,
+		// 	req.body.user_id,
+		// 	req.body.product_id,
+		// 	Number(req.body.quantity),
+		// 	price
+		// );
 
-		await insertPurchase(
-			id,
-			req.body.user_id,
-			req.body.product_id,
-			Number(req.body.quantity),
-			totalPrice
-		);
-
-		res.status(200).send("Product successfully created");
+		// res.status(200).send(`Success! You bought a(n) ${product[0].name}`);
 
 	} catch (error: any) {
 		if (typeof error === "object") {

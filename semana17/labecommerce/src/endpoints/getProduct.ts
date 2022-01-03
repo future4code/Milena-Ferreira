@@ -1,19 +1,23 @@
 import { Request, Response } from "express";
-import selectProducts from "../data/selectProducts";
+import selectProduct from "../data/selectProduct";
 import { product } from "../types";
 
-const getProducts = async (
+const getProduct = async (
 	req: Request,
 	res: Response
 ): Promise<any> => {
 	try {
-		const result = await selectProducts();
+		const page = Number(req.query.page) || 1;
+		const size = Number(req.query.size) || 10;
+		const offset = page * (page - 1);
+
+		const result = await selectProduct(size, offset);
 
 		const products = result.map(toProduct);
 
 		res.status(200).send(products);
 	} catch (error: any) {
-		if (typeof error === "object" && error) {
+		if (typeof error === "object") {
 			res.status(500).send(error.sqlMessage || error.message)
 		} else {
 			res.status(500).send(`Unexpected error: ${error}`)
@@ -30,4 +34,4 @@ const toProduct = (input: any): product => {
 	}
 }
 
-export default getProducts;
+export default getProduct;

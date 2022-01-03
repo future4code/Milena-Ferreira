@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import selectUsers from "../data/selectUsers";
+import selectUser from "../data/selectUser";
 
 const getUsers = async (
 	req: Request,
 	res: Response
 ): Promise<any> => {
 	try {
-		const users = await selectUsers();
+		const users = await selectUser();
 		console.log(users);
 
 		res.status(200).send(users);
