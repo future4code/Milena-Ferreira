@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import selectProduct from "../data/selectProduct";
-import { product } from "../types";
+import { Product } from "../types";
 
 const getProduct = async (
 	req: Request,
@@ -25,12 +25,12 @@ const getProduct = async (
 	}
 }
 
-const toProduct = (input: any): product => {
+const toProduct = (input: any): Product => {
 	return {
 		id: input.id,
 		name: input.name,
 		price: input.price,
-		imageUrl: input.image_url
+		image_url: input.image_url
 	}
 }
 

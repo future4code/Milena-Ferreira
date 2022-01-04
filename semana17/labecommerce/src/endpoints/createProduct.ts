@@ -1,19 +1,23 @@
 import { Request, Response } from "express";
 import insertProduct from "../data/insertProduct";
+import { Product } from "../types";
 
 const createProduct = async (
 	req: Request,
 	res: Response
 ): Promise<void> => {
 	try {
+		const { name, price, image_url } = req.body;
+
+		if (!name || !price || !image_url) {
+			throw new Error("Missing field: name, email or password")
+		}
+
 		const id: string = new Date().getTime().toString();
 
-		await insertProduct(
-			id,
-			req.body.name,
-			Number(req.body.price),
-			req.body.image_url
-		);
+		const product: Product = { id, name, price, image_url }
+
+		await insertProduct(product);
 
 		res.status(200).send("Product successfully created");
 

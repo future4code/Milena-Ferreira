@@ -1,14 +1,13 @@
 import { Request, Response } from "express";
 import selectUser from "../data/selectUser";
+import { User } from "../types";
 
-const getUsers = async (
+const getUser = async (
 	req: Request,
 	res: Response
 ): Promise<any> => {
 	try {
-		const users = await selectUser();
-		console.log(users);
-
+		const users: User[] = await selectUser();
 		res.status(200).send(users);
 	} catch (error: any) {
 		if (typeof error === "object") {
@@ -19,4 +18,4 @@ const getUsers = async (
 	}
 }
 
-export default getUsers;
+export default getUser;

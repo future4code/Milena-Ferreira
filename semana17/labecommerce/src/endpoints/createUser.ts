@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import insertUser from "../data/insertUser";
-import { user } from "../types";
+import { User } from "../types";
 
 const createUser = async (
 	req: Request,
@@ -11,10 +11,10 @@ const createUser = async (
 		const id: string = new Date().getTime().toString();
 
 		if (!name || !email || !password) {
-			throw new Error("Check that all fields be filled up correctly: name, email or password")
+			throw new Error("Missing field: name, email or password")
 		}
 
-		const user: user = { id, name, email, password }
+		const user: User = { id, name, email, password }
 
 
 		await insertUser(user);
