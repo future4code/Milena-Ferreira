@@ -6,4 +6,4 @@ function checaTriangulo(a: number, b: number, c: number) : string {
     } else {
       return "Isósceles";
     }
-  }
+}
