@@ -6,7 +6,8 @@
   "scripts": {
     "exercise1": "tsc && node ./build/exercise1.js",
     "exercise2": "tsc && node ./build/exercise2.js",
-    "exercise3": "tsc && node ./build/exercise3.js"
+    "exercise3": "tsc && node ./build/exercise3.js",
+    "exercise4": "tsc && node ./build/exercise4.js"
   },
   "keywords": [],
   "author": "",
