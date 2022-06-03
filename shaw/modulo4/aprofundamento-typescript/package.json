@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "exercise1": "tsc && node ./build/exercise1.js",
+    "exercise2": "tsc && node ./build/exercise2.js",
+    "exercise3": "tsc && node ./build/exercise3.js"
   },
   "keywords": [],
   "author": "",
