@@ -1,7 +1,3 @@
-// faça uma nova função que receba o array de estoque como parâmetro,
-// use a função ajustaPreco para corrigir os preços
-// e retorne a lista de estoque ordenada pela quantidade de cada produto. 
-
 type produto = {
   nome: string,
   quantidade: number,
