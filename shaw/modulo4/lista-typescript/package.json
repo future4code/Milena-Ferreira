@@ -12,7 +12,9 @@
     "start6": "clear && tsc && node ./build/exercicio6.js",
     "start7": "clear && tsc && node ./build/exercicio7.js",
     "start8": "clear && tsc && node ./build/exercicio8.js",
-    "start9": "clear && tsc && node ./build/exercicio9.js"
+    "start9": "clear && tsc && node ./build/exercicio9.js",
+    "start10": "clear && tsc && node ./build/exercicio10.js",
+    "start11": "clear && tsc && node ./build/exercicio11.js"
   },
   "keywords": [],
   "author": "",
