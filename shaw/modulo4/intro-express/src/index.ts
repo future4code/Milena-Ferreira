@@ -126,8 +126,6 @@ app.get("/posts/:user", (req: Request, res: Response) => {
 
   const userPosts = posts.filter((post) => { return post.userId === userId })
 
-
-
   res.send(userPosts);
 })
 
