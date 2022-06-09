@@ -53,7 +53,7 @@ const afazeres: Array<afazer> = [
   },
   {
     "userId": 2,
-    "id": 5,
+    "id": 6,
     "title": "fazer almoço",
     "completed": false
   }
@@ -73,6 +73,36 @@ app.get("/afazeres", (req: Request, res: Response) => {
 
   res.status(200).send(afazeresFiltrados);
 });
+
+// Exercício 5
+app.post("/afazeres/novo", (req: Request, res: Response) => {
+  const novoAfazer: afazer = req.body;
+
+  afazeres.push(novoAfazer);
+
+  res.status(200).send(afazeres);
+})
+
+// Exercício 6
+// app.put("/afazeres/:id", (req: Request, res: Response) => {
+//   const id: number = Number(req.params.id);
+
+//   const procuraAfazer: afazer | undefined = afazeres.find((afazer) => {
+//     return afazer.id === id;
+//   });
+
+//   if (typeof (procuraAfazer !== undefined)) {
+//     const afazerEditado: afazer = {...procuraAfazer, completed: !procuraAfazer?.completed};
+//     res.status(200).send(afazerEditado);
+//   } else {
+//     res.send("Erro: id não encontrado");
+//   }
+// });
+
+// Exercício 7
+
+// Exercício 8
+// Exercício 9
 
 app.listen(3003, () => {
   console.log("Server is running in http://localhost:3003");
