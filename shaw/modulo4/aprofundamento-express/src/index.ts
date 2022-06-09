@@ -84,24 +84,48 @@ app.post("/afazeres/novo", (req: Request, res: Response) => {
 })
 
 // Exercício 6
-// app.put("/afazeres/:id", (req: Request, res: Response) => {
-//   const id: number = Number(req.params.id);
+app.put("/afazeres/:id", (req: Request, res: Response) => {
+  const id: number = Number(req.params.id);
 
-//   const procuraAfazer: afazer | undefined = afazeres.find((afazer) => {
-//     return afazer.id === id;
-//   });
+  const statusAtualizado: (afazer | undefined)[] = afazeres.map((afazer) => {
+    if (afazer.id === id) {
+      return {
+        userId: afazer.userId,
+        id: afazer.id,
+        title: afazer.title,
+        completed: !afazer.completed
+      }
+    }
+  });
 
-//   if (typeof (procuraAfazer !== undefined)) {
-//     const afazerEditado: afazer = {...procuraAfazer, completed: !procuraAfazer?.completed};
-//     res.status(200).send(afazerEditado);
-//   } else {
-//     res.send("Erro: id não encontrado");
-//   }
-// });
+  res.send(statusAtualizado);
+});
 
 // Exercício 7
+app.delete("/afazeres/:id", (req: Request, res: Response) => {
+  const id: number = Number(req.params.id);
+
+  const listaAtualizada = afazeres.map((afazer) => {
+    if (afazer.id === id) {
+      afazeres.splice(afazeres.indexOf(afazer), 1);
+    }
+    return afazeres;
+  });
+
+  res.status(200).send(listaAtualizada);
+})
 
 // Exercício 8
+app.get("/users/:id", (req: Request, res: Response) => {
+  const userId: number = Number(req.params.id);
+
+  const tarefasUsuario: (afazer | undefined)[] = afazeres.filter((afazer) => {
+    return userId === afazer.userId
+  })
+
+  res.status(200).send(tarefasUsuario);
+})
+
 // Exercício 9
 
 app.listen(3003, () => {
