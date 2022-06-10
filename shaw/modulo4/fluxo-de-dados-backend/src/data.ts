@@ -1,10 +1,11 @@
-type produto = {
+// Exercício 2
+export type produto = {
   id: string,
   name: string,
   price: number
 }
 
-const produtos: Array<produto> = [
+export const produtos: Array<produto> = [
   {
     id: "1",
     name: "Pro Longwear Nourishing Foundation",
