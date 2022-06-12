@@ -5,7 +5,7 @@ export type produto = {
   price: number
 }
 
-export const produtos: Array<produto> = [
+export const produtos = [
   {
     id: "1",
     name: "Pro Longwear Nourishing Foundation",
@@ -29,6 +29,6 @@ export const produtos: Array<produto> = [
   {
     id: "5",
     name: "Lipgloss MAC Stranger Things",
-    price: 129.90
+    price: 109.90
   },
 ]
