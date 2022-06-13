@@ -26,6 +26,15 @@ app.post("/accounts", (req: Request, res: Response) => {
       throw new Error("Please check that all fields be filled up.")
     }
 
+    const [year, month, day] = birthDate.split("/");
+    const formattedBirthDate: Date = new Date(`${year}-${month}-${day}`);
+    const ageInMilisseconds: number = Date.now() - birthDate.getTime();
+    const ageInYears: number = ageInMilisseconds / (1000 * 60 * 60 * 24 * 365);
+
+    if (ageInYears < 18) {
+      errorCode = 406;
+      throw new Error("User must be 18 or older.")
+    }
     const newAccount: Account = { name, cpf, birthDate, balance: 0, statement: [] };
 
     accounts.push(newAccount);
