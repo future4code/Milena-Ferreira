@@ -146,7 +146,31 @@ SELECT id, title, synopsis FROM Movie
 WHERE rating >= 7;
 ```
 
-
+## Exercício 7
+- a)
 ```sql
+SELECT * FROM Movie
+WHERE title LIKE "%vida%";
+```
 
+- b)
+```sql
+SELECT * FROM Movie
+WHERE (title LIKE "%mãe%"
+OR synopsis LIKE "%mãe");
+```
+
+- c)
+```sql
+SELECT * FROM Movie
+WHERE release_date < curdate();
+```
+
+- d)
+```sql
+SELECT * FROM Movie
+WHERE release_date < curdate()
+AND (title LIKE "%mãe%"
+OR synopsis LIKE "%mãe")
+AND rating > 7;
 ```
