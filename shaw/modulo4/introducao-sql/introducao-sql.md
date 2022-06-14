@@ -129,12 +129,23 @@ VALUES (
 );
 ```
 
-## Exercício 
-
-
+## Exercício 6
+- a)
 ```sql
-
+SELECT id, title, rating FROM Movie
+WHERE id = "004";
 ```
+- b)
+```sql
+SELECT * FROM Movie
+WHERE title = "Bacurau";
+```
+- c)
+```sql
+SELECT id, title, synopsis FROM Movie
+WHERE rating >= 7;
+```
+
 
 ```sql
 
