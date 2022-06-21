@@ -15,3 +15,5 @@ SET
     birth_date = "2002-05-23",
     gender = "female"
 WHERE id = "005";
+
+UPDATE Actor SET sex = "male" WHERE id = "001";

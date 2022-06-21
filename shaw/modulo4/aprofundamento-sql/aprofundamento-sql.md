@@ -43,6 +43,20 @@ UPDATE Actor SET sex = "male" WHERE id = "001";
 `Error Code: 1054. Unknown column 'sex' in 'field list'` - o nome do campo é desconhecido.
 
 # Exercício 3
+- a)
+
+```sql
+DELETE FROM Actor WHERE name = "Fernanda Montenegro";
+```
+
+- b)
+
+```sql
+DELETE FROM Actor WHERE gender = "male" AND salary > 1000000;
+```
+
+
+
 # Exercício 4
 # Exercício 5
 # Exercício 6
