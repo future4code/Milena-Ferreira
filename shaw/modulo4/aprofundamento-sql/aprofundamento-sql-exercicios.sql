@@ -54,3 +54,6 @@ ALTER TABLE Movie CHANGE rating rating FLOAT;
 
 UPDATE Movie SET playing_limit_date = "2022-06-30" WHERE id = "001";
 UPDATE Movie SET playing_limit_date = "2022-06-19" WHERE id = "002";
+
+DELETE FROM Movie WHERE id = "003";
+UPDATE Movie SET synopsis = "lorem ipsum" WHERE id = "003";
