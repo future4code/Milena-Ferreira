@@ -44,3 +44,13 @@ SELECT * FROM Actor ORDER BY salary;
 SELECT * FROM Actor WHERE gender = "male" ORDER BY salary DESC LIMIT 3;
 
 SELECT AVG(salary), gender FROM Actor GROUP BY gender;
+
+SELECT * FROM Movie;
+DESCRIBE Movie;
+
+ALTER TABLE Movie ADD playing_limit_date DATE;
+
+ALTER TABLE Movie CHANGE rating rating FLOAT;
+
+UPDATE Movie SET playing_limit_date = "2022-06-30" WHERE id = "001";
+UPDATE Movie SET playing_limit_date = "2022-06-19" WHERE id = "002";

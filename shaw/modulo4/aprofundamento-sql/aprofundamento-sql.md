@@ -104,7 +104,20 @@ GROUP BY gender;
 ```
 
 # Exercício 6
-
+- a) 
 ```sql
-
+ALTER TABLE Movie ADD playing_limit_date DATE;
 ```
+
+- b) 
+```sql
+ALTER TABLE Movie CHANGE rating rating FLOAT;
+```
+
+- c) 
+```sql
+UPDATE Movie SET playing_limit_date = "2022-06-30" WHERE id = "001";
+UPDATE Movie SET playing_limit_date = "2022-06-19" WHERE id = "002";
+```
+
+- d) `0 row(s) affected Rows matched: 0  Changed: 0  Warnings: 0` - Nenhuma linha foi afetada, já que o id passado não corresponde a nenhum dado.
