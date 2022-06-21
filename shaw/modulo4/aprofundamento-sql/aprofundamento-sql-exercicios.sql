@@ -17,3 +17,30 @@ SET
 WHERE id = "005";
 
 UPDATE Actor SET sex = "male" WHERE id = "001";
+
+DELETE FROM Actor WHERE name = "Fernanda Montenegro";
+
+INSERT INTO Actor VALUES ("006", "Tom Hanks", 2000000, "1953-09-27", "male");
+INSERT INTO Actor VALUES ("007", "Selton Melo", 70000, "1973-09-27", "male");
+
+DELETE FROM Actor WHERE gender = "male" AND salary > 1000000;
+
+SELECT MAX(salary) FROM Actor;
+
+SELECT MIN(salary) FROM Actor WHERE gender = "female";
+
+SELECT COUNT(*) FROM Actor WHERE gender = "female";
+
+SELECT SUM(salary) FROM Actor;
+
+SELECT COUNT(*), gender
+FROM Actor
+GROUP BY gender;
+
+SELECT id, name FROM Actor ORDER BY name DESC;
+
+SELECT * FROM Actor ORDER BY salary;
+
+SELECT * FROM Actor WHERE gender = "male" ORDER BY salary DESC LIMIT 3;
+
+SELECT AVG(salary), gender FROM Actor GROUP BY gender;

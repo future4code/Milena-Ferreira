@@ -55,11 +55,56 @@ DELETE FROM Actor WHERE name = "Fernanda Montenegro";
 DELETE FROM Actor WHERE gender = "male" AND salary > 1000000;
 ```
 
-
-
 # Exercício 4
+
+- a)
+```sql
+SELECT MAX(salary) FROM Actor;
+```
+
+- b)
+```sql
+SELECT MIN(salary) FROM Actor WHERE gender = "female";
+```
+
+- c)
+```sql
+SELECT COUNT(*) FROM Actor WHERE gender = "female";
+```
+
+- d)
+```sql
+SELECT SUM(salary) FROM Actor;
+```
+
 # Exercício 5
+- a) A query conta a quantidade de atores/atrizes em cada categoria de gênero.
+
+- b) 
+```sql
+SELECT id, name FROM Actor ORDER BY name DESC;
+```
+- c)
+```sql
+SELECT * FROM Actor ORDER BY salary;
+```
+
+- d)
+```sql
+SELECT * FROM Actor
+WHERE gender = "male" 
+ORDER BY salary DESC 
+LIMIT 3;
+```
+
+- e)
+```sql
+SELECT AVG(salary), gender FROM Actor
+GROUP BY gender;
+```
+
 # Exercício 6
 
 ```sql
+
 ```
