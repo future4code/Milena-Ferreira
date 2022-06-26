@@ -18,7 +18,30 @@ const countActorsByGender = async (gender: string): Promise<any> => {
   return result[0];
 };
 
-app.get("/actor", async (req: Request, res: Response) => {
+const updateSalaryById = async (
+  id: string,
+  salary: number
+): Promise<void> => {
+  await connection("Actor")
+    .update({ salary })
+    .where({ id });
+}
+
+const deleteActorById = async (id: string): Promise<void> => {
+  await connection("Actor")
+    .delete()
+    .where({ id });
+};
+
+const getAverageSalaryByGender = async (gender: string): Promise<any> => {
+  const result = await connection("Actor")
+    .avg(`salary as average_salary`)
+    .where({ gender });
+
+  return result;
+};
+
+app.get("/actor/count", async (req: Request, res: Response) => {
   let errorCode = 400;
   try {
     const gender: string = req.query.gender as string;
@@ -26,6 +49,19 @@ app.get("/actor", async (req: Request, res: Response) => {
     const countActors = await countActorsByGender(gender);
 
     res.status(200).send(countActors);
+  } catch (error: any) {
+    res.status(errorCode).send(error.sqlMessage || error.message);
+  }
+});
+
+app.get("/actor/salary", async (req: Request, res: Response) => {
+  let errorCode = 400;
+  try {
+    const gender: string = req.query.gender as string;
+
+    const averageSalary = await getAverageSalaryByGender(gender);
+
+    res.status(200).send(averageSalary);
   } catch (error: any) {
     res.status(errorCode).send(error.sqlMessage || error.message);
   }
@@ -43,6 +79,33 @@ app.get("/actor/:name", async (req: Request, res: Response) => {
     } else {
       res.status(200).send(actor);
     }
+  } catch (error: any) {
+    res.status(errorCode).send(error.sqlMessage || error.message);
+  }
+});
+
+app.put("/actor", async (req: Request, res: Response) => {
+  let errorCode = 400;
+  try {
+    const { id, salary } = req.body;
+
+    await updateSalaryById(id, salary);
+
+    res.status(200).send("Salary updated successfully");
+
+  } catch (error: any) {
+    res.status(errorCode).send(error.sqlMessage || error.message);
+  }
+})
+
+app.delete("/actor/:id", async (req: Request, res: Response) => {
+  let errorCode = 400;
+  try {
+    const id: string = req.params.id as string;
+
+    await deleteActorById(id);
+
+    res.status(200).send("User successfully deleted");
   } catch (error: any) {
     res.status(errorCode).send(error.sqlMessage || error.message);
   }
