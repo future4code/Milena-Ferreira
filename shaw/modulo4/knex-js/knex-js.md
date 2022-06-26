@@ -61,6 +61,7 @@ const getAverageSalaryByGender = async (gender: string): Promise<any> => {
 ```
 
 ## Exercício 3
+- b)
 ```ts
 
 ```
