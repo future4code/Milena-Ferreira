@@ -1,0 +1,14 @@
+{
+  "name": "aula-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "exercise1": "clear && node ./exercise1.js",
+    "exercise2": "clear && node ./exercise2.js",
+    "exercise3": "clear && node ./exercise3.js"
+  },
+  "author": "Milena Lara",
+  "license": "ISC"
+}
