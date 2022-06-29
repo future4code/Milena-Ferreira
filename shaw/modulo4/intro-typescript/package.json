@@ -1,0 +1,16 @@
+{
+  "name": "intro-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exercicio1": "tsc && node ./build/exercio1.js",
+    "exercicio2": "tsc && node ./build/exercio2.js",
+    "exercicio3": "tsc && node ./build/exercio3.js",
+    "exercicio4": "tsc && node ./build/exercio4.js",
+    "exercicio5": "tsc && node ./build/exercio5.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
