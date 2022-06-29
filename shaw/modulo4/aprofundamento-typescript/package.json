@@ -1,0 +1,15 @@
+{
+  "name": "aprofundamento-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exercise1": "tsc && node ./build/exercise1.js",
+    "exercise2": "tsc && node ./build/exercise2.js",
+    "exercise3": "tsc && node ./build/exercise3.js",
+    "exercise4": "tsc && node ./build/exercise4.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
