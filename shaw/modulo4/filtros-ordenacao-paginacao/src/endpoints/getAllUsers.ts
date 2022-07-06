@@ -4,9 +4,8 @@ import selectAllUsers from "../data/selectAllUsers"
 export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
   try {
     const name: string = req.query.name as string;
-    const userType: string = req.query.type as string
 
-    const users = await selectAllUsers(name, userType)
+    const users = await selectAllUsers(name)
 
     if (users.length < 1) {
       res.statusCode = 404
