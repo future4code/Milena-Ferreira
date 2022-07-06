@@ -15,3 +15,5 @@ CREATE TABLE List_Tasks (
     creatorUserId VARCHAR(255),
     FOREIGN KEY (creatorUserId) REFERENCES List_Users(id)
 );
+
+SELECT * FROM List_Tasks;
