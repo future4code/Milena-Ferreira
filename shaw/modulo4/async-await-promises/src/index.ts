@@ -72,15 +72,32 @@ async function createNews(
 }
 
 // Exercício 5
+// async function notifyUsers(users: user[]): Promise<void> {
+//   users.map(async user => {
+//     await axios.post(`${baseUrl}/notifications`, {
+//       subscriberId: user.id,
+//       message: "Seja bem vindoooooo!"
+//     })
+//   })
+//   console.log("All notifications sent");
+// }
+
+// Exercício 6
+// a) Recebe um array de Promises e retorna um array de respostas.
+// b) É mais rápido porque não há a necessidade de esperar que cada requisição seja concluída antes que a próxima seja iniciada.
+// c)
 async function notifyUsers(users: user[]): Promise<void> {
-  users.map(async user => {
-    await axios.post(`${baseUrl}/notifications`, {
+  const promises = users.map(user => {
+    return axios.post(`${baseUrl}/notifications`, {
       subscriberId: user.id,
       message: "Seja bem vindoooooo!"
     })
   })
+
+  await Promise.all(promises);
   console.log("All notifications sent");
 }
+
 
 const main = async (): Promise<void> => {
   try {
