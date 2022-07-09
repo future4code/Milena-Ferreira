@@ -1,16 +1,20 @@
 import connection from "../connection"
 
-export default async function selectAllUsers(name?: string): Promise<any> {
-  let query = `
-  SELECT id, name, email, type
-  FROM aula48_exercicio`;
+export default async function selectAllUsers(
+  name: string,
+  type: string,
+  sort: string,
+  order: string,
+  size: number,
+  offset: number
+): Promise<any> {
+  const result = await connection("aula48_exercicio")
+    .select("*")
+    .where("name", "like", `%${name}%`)
+    .orWhere("type", "like", `%${type}%`)
+    .orderBy(`${sort}`, `${order}`)
+    .limit(size)
+    .offset(offset);
 
-  if (name !== "") {
-    query += `
-    WHERE name LIKE "%${name}%"`
-  }
-
-  const result = await connection.raw(query)
-
-  return result[0]
+  return result;
 }

@@ -1,9 +1,8 @@
 import { Request, Response } from "express"
-import selectAllUsers from "../data/selectAllUsers"
+import selectUsersSort from "../data/selectUsersSort"
 
-export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
+export const getUsersSort = async (req: Request, res: Response): Promise<void> => {
   try {
-    const name: string = req.query.name as string;
     let order = req.query.order as string;
     let sort = req.query.sort as string;
 
@@ -17,7 +16,7 @@ export const getAllUsers = async (req: Request, res: Response): Promise<void> =>
       order = "asc";
     }
 
-    const users = await selectAllUsers(name)
+    const users = await selectUsersSort(order, sort)
 
     if (users.length < 1) {
       res.statusCode = 404
