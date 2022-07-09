@@ -1,7 +1,7 @@
 import app from "./app";
 import { getAllUsers } from "./endpoints/getAllUsers";
-import getUser
+import { getUsersByType } from "./endpoints/getUsersByType";
 
 app.get("/users", getAllUsers);
 
-app.get("/users/:type", getUsersByType)
+app.get("/users/:type", getUsersByType);

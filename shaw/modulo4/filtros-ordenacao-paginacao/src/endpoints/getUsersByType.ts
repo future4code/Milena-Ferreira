@@ -1,11 +1,11 @@
-import { Request, Response } from "express"
-import selectAllUsers from "../data/selectAllUsers"
+import { Request, Response } from "express";
+import selecUsersByType from "../data/selecUsersByType";
 
 export const getUsersByType = async (req: Request, res: Response): Promise<void> => {
   try {
     const userType: string = req.params.name as string;
 
-    const users = await selectAllUsers(userType)
+    const users = await selecUsersByType(userType)
 
     if (users.length < 1) {
       res.statusCode = 404
