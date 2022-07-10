@@ -1,14 +1,17 @@
 import app from "./app";
 import createProduct from "./endpoints/createProduct";
+import createPurchase from "./endpoints/createPurchase";
 import createUser from "./endpoints/createUser";
-import getProducts from "./endpoints/getProducts";
-import getUsers from "./endpoints/getUsers";
+import getProduct from "./endpoints/getProduct";
+import getUser from "./endpoints/getUser";
 
-app.get("/products", getProducts);
+app.get("/products", getProduct);
 
-app.get("/users", getUsers);
+app.get("/users", getUser);
 
-app.post("/products", createProduct)
+app.post("/purchases", createPurchase);
+
+app.post("/products", createProduct);
 
 app.post("/users", createUser);
 

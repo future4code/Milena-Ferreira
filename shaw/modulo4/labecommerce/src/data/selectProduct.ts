@@ -2,11 +2,12 @@ import connection from "../connection";
 import { Product } from "../types/Product";
 
 
-const selectProducts = async (): Promise<Product[]> => {
+const selectProduct = async (id: string): Promise<Product[]> => {
   const products: Product[] = await connection("labecommerce_products")
-    .select("*");
+    .select("*")
+    .where({ id });
 
   return products;
 };
 
-export default selectProducts;
+export default selectProduct;

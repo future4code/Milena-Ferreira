@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import selectUsers from "../data/selectUsers";
+import selectUser from "../data/selectUser";
 import { User } from "../types/User";
 
-const getUsers = async (req: Request, res: Response) => {
+const getUser = async (req: Request, res: Response) => {
   let errorCode = 400;
   try {
-    const users: User[] = await selectUsers();
+    const users: User[] = await selectUser();
 
     res.status(200).send(users);
   } catch (error: any) {
@@ -13,4 +13,4 @@ const getUsers = async (req: Request, res: Response) => {
   }
 };
 
-export default getUsers;
+export default getUser;
