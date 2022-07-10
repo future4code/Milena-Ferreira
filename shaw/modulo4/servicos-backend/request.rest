@@ -1,0 +1,4 @@
+GET http://localhost:3003/
+
+###
+GET https://viacep.com.br/ws/30642020/json/
