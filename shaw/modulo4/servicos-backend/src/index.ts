@@ -1,4 +1,4 @@
 import app from "./app";
-import endpointFunction from "./endpoints/endpointFunction";
+import createAddress from "./endpoints/createAddress";
 
-app.get("/", endpointFunction);
+app.post("/:cep", createAddress);

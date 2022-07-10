@@ -1,4 +1,13 @@
 GET http://localhost:3003/
 
 ###
-GET https://viacep.com.br/ws/30642020/json/
+GET https://viacep.com.br/ws/30190001/json/
+
+###
+POST http://localhost:3003/30190001
+content-type: application/json
+
+{
+    "numero": "30",
+    "complemento": "17º andar"
+}
