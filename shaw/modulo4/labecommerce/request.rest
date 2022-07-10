@@ -1,0 +1,25 @@
+GET http://localhost:3003/users
+
+###
+POST http://localhost:3003/users
+content-type: application/json
+
+{
+    "name": "ana",
+    "email": "ana@gmail.com",
+    "password": "123456"
+}
+
+###
+POST http://localhost:3003/products
+content-type: application/json
+
+{
+    "name": "ração para gatos",
+    "price": 55.99,
+    "image_url": "https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ
+    "
+}
+
+###
+GET http://localhost:3003/products
