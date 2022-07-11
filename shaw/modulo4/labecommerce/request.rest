@@ -1,13 +1,13 @@
-GET http://localhost:3003/users
+GET https://labecommerce-milena.herokuapp.com/users
 
 ###
-POST http://localhost:3003/purchases
+GET https://labecommerce-milena.herokuapp.com/purchases/1657475886093
 
 ###
-GET http://localhost:3003/products
+GET https://labecommerce-milena.herokuapp.com/products
 
 ###
-POST http://localhost:3003/users
+POST https://labecommerce-milena.herokuapp.com/users
 content-type: application/json
 
 {
@@ -17,21 +17,21 @@ content-type: application/json
 }
 
 ###
-POST http://localhost:3003/purchases
+POST https://labecommerce-milena.herokuapp.com/purchases
 content-type: application/json
 
 {
-    "user_id": "1657475519310",
-    "product_id": "1657476273495",
-    "quantity": 2
+    "user_id": "1657475886093",
+    "product_id": "1657539807943",
+    "quantity": 3
 }
 
 ###
-POST http://localhost:3003/products
+POST https://labecommerce-milena.herokuapp.com/products
 content-type: application/json
 
 {
-    "name": "ração para gatos",
-    "price": 55.99,
+    "name": "ração para cães",
+    "price": 66.99,
     "image_url": "https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ"
 }

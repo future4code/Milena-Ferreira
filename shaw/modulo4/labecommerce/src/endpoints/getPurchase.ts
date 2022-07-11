@@ -5,7 +5,7 @@ import selectPurchase from "../data/selectPurchase";
 const getPurchase = async (req: Request, res: Response) => {
   let errorCode = 400;
   try {
-    let id: string = req.query.id as string;
+    let id: string = req.params.id as string;
 
     if (!id) {
       id = "";
