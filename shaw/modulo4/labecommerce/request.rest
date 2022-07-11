@@ -1,7 +1,7 @@
 GET https://labecommerce-milena.herokuapp.com/users
 
 ###
-GET https://labecommerce-milena.herokuapp.com/purchases/1657475886093
+GET https://labecommerce-milena.herokuapp.com/purchases/1657475519310
 
 ###
 GET https://labecommerce-milena.herokuapp.com/products

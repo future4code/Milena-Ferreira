@@ -5,13 +5,13 @@ import selectPurchase from "../data/selectPurchase";
 const getPurchase = async (req: Request, res: Response) => {
   let errorCode = 400;
   try {
-    let id: string = req.params.id as string;
+    let userId: string = req.params.userId as string;
 
-    if (!id) {
-      id = "";
+    if (!userId) {
+      throw new Error("A user ID must be provided")
     }
 
-    const purchases: Purchase[] = await selectPurchase(id);
+    const purchases: Purchase[] = await selectPurchase(userId);
 
     res.status(200).send(purchases);
   } catch (error: any) {
