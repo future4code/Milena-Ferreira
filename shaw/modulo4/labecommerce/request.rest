@@ -1,13 +1,16 @@
-GET https://labecommerce-milena.herokuapp.com/users
+GET http://localhost:3003/users
 
 ###
-GET https://labecommerce-milena.herokuapp.com/purchases/1657475519310
+GET http://localhost:3003/products
 
 ###
-GET https://labecommerce-milena.herokuapp.com/products
+GET http://localhost:3003/purchases/1657475519310
 
 ###
-POST https://labecommerce-milena.herokuapp.com/users
+GET http://localhost:3003/products/1657476273495
+
+###
+POST http://localhost:3003/users
 content-type: application/json
 
 {
@@ -17,7 +20,7 @@ content-type: application/json
 }
 
 ###
-POST https://labecommerce-milena.herokuapp.com/purchases
+POST http://localhost:3003/purchases
 content-type: application/json
 
 {
@@ -27,7 +30,7 @@ content-type: application/json
 }
 
 ###
-POST https://labecommerce-milena.herokuapp.com/products
+POST http://localhost:3003/products
 content-type: application/json
 
 {

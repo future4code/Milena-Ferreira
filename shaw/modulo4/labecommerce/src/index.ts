@@ -2,11 +2,14 @@ import app from "./app";
 import createProduct from "./endpoints/createProduct";
 import createPurchase from "./endpoints/createPurchase";
 import createUser from "./endpoints/createUser";
-import getProduct from "./endpoints/getProduct";
+import getAllProducts from "./endpoints/getAllProducts";
+import getProductById from "./endpoints/getProductById";
 import getPurchase from "./endpoints/getPurchase";
 import getUser from "./endpoints/getUser";
 
-app.get("/products", getProduct);
+app.get("/products", getAllProducts);
+
+app.get("/products/:productId", getProductById);
 
 app.get("/purchases/:userId", getPurchase);
 

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import insertPurchase from "../data/insertPurchase";
-import selectProduct from "../data/selectProduct";
+import selectProductById from "../data/selectProductById";
 import { Purchase } from "../types/Purchase";
 
 const createPurchase = async (req: Request, res: Response) => {
@@ -9,7 +9,7 @@ const createPurchase = async (req: Request, res: Response) => {
     const id: string = Date.now().toString();
 
     const { user_id, product_id, quantity } = req.body;
-    const product = await selectProduct(product_id);
+    const product = await selectProductById(product_id);
     const price = product[0].price;
     const totalPrice = price * quantity;
     const purchase: Purchase = { id, user_id, product_id, quantity, total_price: totalPrice }
