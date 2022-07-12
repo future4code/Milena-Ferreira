@@ -1,5 +1,6 @@
 import User from "./User";
 
+
 class Customer extends User {
   public purchaseTotal: number = 0;
   private creditCard: string;
