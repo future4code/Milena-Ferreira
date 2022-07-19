@@ -1,0 +1,40 @@
+GET http://localhost:3003/users
+
+###
+GET http://localhost:3003/products
+
+###
+GET http://localhost:3003/purchases/1657475519310
+
+###
+GET http://localhost:3003/products/1657476273495
+
+###
+POST http://localhost:3003/users
+content-type: application/json
+
+{
+    "name": "ana",
+    "email": "ana@gmail.com",
+    "password": "123456"
+}
+
+###
+POST http://localhost:3003/purchases
+content-type: application/json
+
+{
+    "user_id": "1657475886093",
+    "product_id": "1657539807943",
+    "quantity": 3
+}
+
+###
+POST http://localhost:3003/products
+content-type: application/json
+
+{
+    "name": "ração para cães",
+    "price": 66.99,
+    "image_url": "https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ"
+}
