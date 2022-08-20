@@ -1,7 +1,10 @@
 import Customer from "./heranca/Customer";
 import User from "./heranca/User";
 import { Client } from "./polimorfismo/Client";
+import { Commerce } from "./polimorfismo/Commerce";
+import { Industry } from "./polimorfismo/Industry";
 import { Place } from "./polimorfismo/Place";
+import { Residence } from "./polimorfismo/Residence";
 
 // EXERCÍCIOS DE HERANÇA
 
@@ -45,19 +48,19 @@ import { Place } from "./polimorfismo/Place";
 // EXERCÍCIOS DE POLIMORFISMO
 
 // Exercício 1
-const client1: Client = {
-  name: "Whiskas",
-  registrationNumber: 123,
-  consumedEnergy: 120,
-  calculateBill: () => {
-    return 2;
-  }
-}
+// const client1: Client = {
+//   name: "Whiskas",
+//   registrationNumber: 123,
+//   consumedEnergy: 120,
+//   calculateBill: () => {
+//     return 2;
+//   }
+// }
 
-console.log(client1.name);
-console.log(client1.registrationNumber);
-console.log(client1.consumedEnergy);
-console.log(client1.calculateBill());
+// console.log(client1.name);
+// console.log(client1.registrationNumber);
+// console.log(client1.consumedEnergy);
+// console.log(client1.calculateBill());
 
 // a) Quais propriedades você conseguiu imprimir? Teve alguma que não foi possível? Por que isso aconteceu?
 // Consegui imprimir todas poque nenhuma delas foi declarada como "private"
@@ -70,4 +73,13 @@ console.log(client1.calculateBill());
 // Cannot create an instance of an abstract class.
 
 // b) Pense e responda: o que precisaríamos fazer para conseguir efetivamente criar uma instância dessa classe?
-// Implementa-la em uma classe
+// Implementa-la em uma classe e criar uma instância dessa classe filha.
+
+const residence = new Residence(3, "30642400");
+console.log(residence.getCep());
+
+const commerce = new Commerce(2, "30642050");
+console.log(commerce.getCep());
+
+const industry = new Industry(5, "30642500");
+console.log(industry.getCep());
